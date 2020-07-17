@@ -1,2 +1,2 @@
 # EZHotel
-CS4125 - Hotel Management System
+Website đặt phòng khách sạn sử dụng Spring Boot + Mysql
