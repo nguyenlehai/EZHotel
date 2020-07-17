@@ -6,11 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class HotelApplicationTests {
-    HomeController homeController;
+  HomeController homeController;
 
-    @Test
-    void contextLoads() {
+  @Test
+  void contextLoads() {
 
-    }
-
+  }
 }

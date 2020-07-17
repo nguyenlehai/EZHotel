@@ -1,0 +1,54 @@
+
+3. Các chức năng hiện có :
+- Đăng ký
+	+ Check validate cho:
+		. Username: 
+			Username must be between 6 and 32 characters!
+		. Password: 
+			These passwords don't match!
+			Password must contain minimum 6 characters!
+- Đăng nhập
+- Đăng xuất 
+- Trang Room: Xem danh sách phòng
+- Trang Event: Sự kiện do khách sạn tổ chức
+- Trang About: Giới thiệu về hệ thống
+
+Trong chức năng thanh toán gồm :
+- Thêm dịch vụ phòng : AC, Bottle of Wine, Dinner, Wifi sẽ cộng thêm phụ phí từng loại.
+- Chọn số người khách đặt phòng 
+
+
+4. Các lỗi hiện có:
+- Register: tự động focus vào field: Username
+- Login:
+	+ Nhập username đúng, password (sai hoặc đúng pass) vẫn đăng nhập được.
+
+- Logout:
+	+ Logout ra thì bị lỗi: HTTP Status 404 – Not Found
+	
+- Thanh menu (home, room, event, contact, about):
+	+ Luôn focus vào Home cho dù có bấm vào button nào khác.
+	+ Click vào Home hoặc Ez Hotel đều chuyển hướng về trang Home -> Bỏ 1 trong 2 button.
+	+ Tự mất thông tin đăng nhập khi chuyển sang các tab Room, Event...
+	
+- Không có mục thêm tiền vào tài khoản nên user mới không thể đặt phòng.
+- Trùng Id phòng khi hiển thị các phòng
+- Không thể đặt phòng
+- Không hiển thị trang Event
+- Không sử dụng được payment
+
+6. Chức năng cần thêm:
+A, Khách hàng:
+- Xem thông tin khách hàng:
+	+ Có thể thêm upload avatar.
+	+ Cập nhật email: gửi email xác thực và có thể đăng nhập bằng email.
+	+ Lịch sử đặt phòng.
+	+ Số tiền hiện có.
+- Nạp tiền vào tài khoản:
+- Khi thuê phòng là phòng cơ bản, có thể thêm các loại chi phí khác đi kèm:
+	+ Dịch vụ AC, Bottle of Wine, Dinner, Wifi.
+- Xem thông tin những phòng đã đặt thành công.
+- Có thể mua/chọn các Event để giảm giá phòng.
+- Nạp tiền vào tài khoản cá nhân.
+- Xuất hóa đơn sau khi đặt phòng
+
