@@ -2,24 +2,13 @@ package com.cyan.hotel.billingSystem;
 
 import com.cyan.hotel.model.Booking;
 
-import java.util.Observable;
-import java.util.Observer;
+public class BillingSystem {
+  Booking observable;
+  int bookingTotal;
 
-/**
- * @author: John Long
- * @create: 12-Nov-2019
- **/
-
-public class BillingSystem  {
-    Booking observable;
-    int bookingTotal;
-
-
-    public BillingSystem(Booking booking){
-        this.observable = booking;
-    }
-
-
+  public BillingSystem(Booking booking) {
+	this.observable = booking;
+  }
 
 //    @Override
 //    public void update(Observable o, Object arg) {

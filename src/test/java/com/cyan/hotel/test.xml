@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <user
-            name="1"
-            username="Zaphod Beeblebrox"
-            password="zaphod@galaxy.net"
-
-    />
+  <user
+          name="1"
+          username="nguyenlehai"
+          password="123456"
+  />
 </dataset>

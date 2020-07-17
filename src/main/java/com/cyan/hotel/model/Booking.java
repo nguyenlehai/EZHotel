@@ -1,51 +1,42 @@
 package com.cyan.hotel.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
-import java.util.Date;
-import java.util.Observable;
 import java.util.Observer;
-
-/**
- * @author: Naichuan Zhang
- * @create: 06-Nov-2019
- **/
 
 @Entity
 @Table(name = "booking")
-public class Booking  {
+public class Booking {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "bookingId")
-    private Long bookingId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "bookingId")
+  private Long bookingId;
 
-    @Column(name = "bookingDate")
-//    @Pattern(regexp = "dd/MM/yyyy")
-    private String bookingDate;
+  @Column(name = "bookingDate")
+  @Pattern(regexp = "dd/MM/yyyy")
+  private String bookingDate;
 
-    @Column(name = "numberOfGuests")
-    private Integer numberOfGuests;
+  @Column(name = "numberOfGuests")
+  private Integer numberOfGuests;
 
-    @Column(name = "bookingTotal")
-    private Double bookingTotal;
+  @Column(name = "bookingTotal")
+  private Double bookingTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+  @ManyToOne
+  @JoinColumn(name = "userId")
+  private User user;
 
-    @Transient
-    private Observer observer;
+  @Transient
+  private Observer observer;
 
-    public Booking() {
+  public Booking() {
 
-    }
+  }
 
-    public Observer getObserver() {
-        return observer;
-    }
+  public Observer getObserver() {
+	return observer;
+  }
 
 //    public void setBookingTotal(Observer observer, Integer newBookingTotal) {
 //        int result = bookingTotal.compareTo(newBookingTotal);
@@ -57,43 +48,43 @@ public class Booking  {
 //        }
 //    }
 
-    public void setBookingId(Long bookingId) {
-        this.bookingId = bookingId;
-    }
+  public void setBookingId(Long bookingId) {
+	this.bookingId = bookingId;
+  }
 
-    public Long getBookingId() {
-        return bookingId;
-    }
+  public Long getBookingId() {
+	return bookingId;
+  }
 
-    public void setBookingDate(String bookingDate) {
-        this.bookingDate = bookingDate;
-    }
+  public void setBookingDate(String bookingDate) {
+	this.bookingDate = bookingDate;
+  }
 
-    public Integer getNumberOfGuests() {
-        return numberOfGuests;
-    }
+  public Integer getNumberOfGuests() {
+	return numberOfGuests;
+  }
 
-    public void setNumberOfGuests(Integer numberOfGuests) {
-        this.numberOfGuests = numberOfGuests;
-    }
+  public void setNumberOfGuests(Integer numberOfGuests) {
+	this.numberOfGuests = numberOfGuests;
+  }
 
-    public String getBookingDate() {
-        return bookingDate;
-    }
+  public String getBookingDate() {
+	return bookingDate;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public User getUser() {
+	return user;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setUser(User user) {
+	this.user = user;
+  }
 
-    public void setBookingTotal(Double bookingTotal) {
-        this.bookingTotal = bookingTotal;
-    }
+  public void setBookingTotal(Double bookingTotal) {
+	this.bookingTotal = bookingTotal;
+  }
 
-    public Double getBookingTotal() {
-        return bookingTotal;
-    }
+  public Double getBookingTotal() {
+	return bookingTotal;
+  }
 }
