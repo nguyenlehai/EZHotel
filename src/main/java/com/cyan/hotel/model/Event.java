@@ -19,7 +19,7 @@ public class Event {
     private int eventDiscount;
 
     @ManyToMany (mappedBy = "events")
-    Set<User> userSet;
+    Set<User> users;
 
 
     public Event() {

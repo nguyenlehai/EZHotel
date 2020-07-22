@@ -5,28 +5,26 @@ import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
-@Table(name = "booking")
 public class Booking {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
   private Long id;
 
-  @Column(name = "bookingDate")
+
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})")
   private String bookingDate;
 
-  @Column(name = "bookingTotal")
+
   private Float bookingTotal;
 
-  @Column(name = "bookingCode")
+
   private String bookingCode;
 
-  @Column(name = "checkInDate")
+
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
   private String checkInDate;
 
-  @Column(name = "checkOutDate")
+
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
   private String checkOutDate;
 

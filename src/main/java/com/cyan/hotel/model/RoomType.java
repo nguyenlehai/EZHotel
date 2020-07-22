@@ -6,26 +6,24 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "roomType")
 public class RoomType {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id")
-  private Long roomTypeId;
+  private Long id;
 
-  @Column(name = "type")
+
   @Enumerated(EnumType.STRING)
   private RoomStyle type;
 
   @OneToMany(mappedBy = "room_type")
   Set<Room> rooms;
 
-  public Long getRoomTypeId() {
-	return roomTypeId;
+  public Long getId() {
+    return id;
   }
 
-  public void setRoomTypeId(Long roomTypeId) {
-	this.roomTypeId = roomTypeId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public RoomStyle getType() {
