@@ -83,7 +83,6 @@ public class BookingController {
 
 
 	  assert room != null;
-	  return room.getPrice();
 	}
 	return price;
   }

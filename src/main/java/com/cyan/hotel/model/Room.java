@@ -2,63 +2,78 @@ package com.cyan.hotel.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "room")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Room {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "roomId")
-  private Long roomId;
+  @Column(name = "id")
+  private Long id;
 
-  @Column(name = "roomStatus", columnDefinition = "int default 0")
-  @Pattern(regexp = "^[01]")
-  private Integer roomStatus;
+  @Column(name = "room_name")
+  private String room_name;
+
+  @Column(name = "room_price")
+  private Float room_price;
 
   @ManyToOne
-  @JoinColumn(name = "bookingId")
-  private Booking booking;
+  @JoinColumn(name = "room_type_id", nullable = false, insertable = false, updatable = false)
+  private RoomType room_type;
 
-  @Column(name = "roomType")
-  private String roomType;
+  @Column(name = "room_image")
+  private String room_image;
 
-  public Room() {
-	this.roomStatus = 0;
+  @ManyToMany
+  Set<Booking> bookings;
+
+  public Long getId() {
+	return id;
   }
 
-  public abstract Double getPrice();
-
-  public abstract String getDescription();
-
-  public Long getRoomId() {
-	return roomId;
+  public void setId(Long id) {
+	this.id = id;
   }
 
-  public void setRoomId(Long roomId) {
-	this.roomId = roomId;
+  public String getRoom_name() {
+	return room_name;
   }
 
-  public Integer getRoomStatus() {
-	return roomStatus;
+  public void setRoom_name(String room_name) {
+	this.room_name = room_name;
   }
 
-  public void setRoomStatus(Integer roomStatus) {
-	this.roomStatus = roomStatus;
+  public Float getRoom_price() {
+	return room_price;
   }
 
-  public Booking getBooking() {
-	return booking;
+  public void setRoom_price(Float room_price) {
+	this.room_price = room_price;
   }
 
-  public void setBooking(Booking booking) {
-	this.booking = booking;
+  public String getRoom_image() {
+	return room_image;
   }
 
-  public String getRoomType() {
-	return roomType;
+  public void setRoom_image(String room_image) {
+	this.room_image = room_image;
   }
 
-  public void setRoomType(String roomType) {
-	this.roomType = roomType;
+  public RoomType getRoom_type() {
+	return room_type;
+  }
+
+  public void setRoom_type(RoomType room_type) {
+	this.room_type = room_type;
+  }
+
+  public Set<Booking> getBookings() {
+	return bookings;
+  }
+
+  public void setBookings(Set<Booking> bookings) {
+	this.bookings = bookings;
   }
 }

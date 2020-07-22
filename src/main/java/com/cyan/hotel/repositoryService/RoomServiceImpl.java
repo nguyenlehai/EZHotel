@@ -12,32 +12,24 @@ public class RoomServiceImpl implements RoomService {
   @Autowired
   private RoomRepository roomRepository;
 
-//    @Override
-//    public Room getRoomByRoomId(Long roomId) {
-////        return roomRepository.findById(roomId)
-////                .orElseThrow(()-> new RoomNotFoundException(roomId));
-//        return roomRepository.findRoomByRoomId(roomId);
-//    }
-
   @Override
   public Room findRoomByRoomId(Long roomId) {
-	return roomRepository.getRoomByRoomId(roomId);
-	//return roomRepository.findById(roomId).orElseThrow(() -> new RoomNotFoundException(roomId));
+	return null;
   }
 
   @Override
   public List<Room> findAllRooms() {
-	return roomRepository.findAllRooms();
+	return null;
   }
 
   @Override
   public List<Room> findAllAvailableRooms() {
-	return roomRepository.findAllAvailableRooms();
+	return null;
   }
 
   @Override
   public List<Room> getRoomsByRoomType(String roomType) {
-	return roomRepository.getRoomsByRoomType(roomType);
+	return null;
   }
 
   @Override

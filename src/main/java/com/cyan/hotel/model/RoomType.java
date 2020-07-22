@@ -3,34 +3,22 @@ package com.cyan.hotel.model;
 import com.cyan.hotel.enumeration.RoomStyle;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "roomType")
 public class RoomType {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "roomTypeId")
+  @Column(name = "id")
   private Long roomTypeId;
 
-//    @OneToMany(mappedBy = "roomType", cascade = CascadeType.ALL)
-//    private Set<Room> rooms;
-
-  @Column(name = "roomStyle")
+  @Column(name = "type")
   @Enumerated(EnumType.STRING)
-  private RoomStyle roomStyle;
+  private RoomStyle type;
 
-  @Column(name = "roomRate")
-  private int roomRate;
-
-  @Column(name = "numBeds")
-  private int numBeds;
-
-  @Column(name = "capacity")
-  private int capacity;
-
-  @Column(name = "description")
-  private String description;
+  @OneToMany(mappedBy = "room_type")
+  Set<Room> rooms;
 
   public Long getRoomTypeId() {
 	return roomTypeId;
@@ -40,44 +28,11 @@ public class RoomType {
 	this.roomTypeId = roomTypeId;
   }
 
-
-  public int getRoomRate() {
-	return roomRate;
+  public RoomStyle getType() {
+	return type;
   }
 
-  public RoomStyle getRoomStyle() {
-	return roomStyle;
-  }
-
-  public void setRoomStyle(RoomStyle roomStyle) {
-	this.roomStyle = roomStyle;
-  }
-
-  public void setRoomRate(int roomRate) {
-	this.roomRate = roomRate;
-  }
-
-  public int getNumBeds() {
-	return numBeds;
-  }
-
-  public void setNumBeds(int numBeds) {
-	this.numBeds = numBeds;
-  }
-
-  public int getCapacity() {
-	return capacity;
-  }
-
-  public void setCapacity(int capacity) {
-	this.capacity = capacity;
-  }
-
-  public String getDescription() {
-	return description;
-  }
-
-  public void setDescription(String description) {
-	this.description = description;
+  public void setType(RoomStyle type) {
+	this.type = type;
   }
 }

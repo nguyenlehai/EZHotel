@@ -12,15 +12,15 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-  @Query(value = "select r from Room r", nativeQuery = true)
-  List<Room> findAllRooms();
-
-  @Query(value = "select r from Room r where r.roomStatus = 0", nativeQuery = true)
-  List<Room> findAllAvailableRooms();
-
-  List<Room> getRoomsByRoomType(String roomType);
-
-  Room getRoomByRoomId(Long roomId);
+//  @Query(value = "select r from Room r", nativeQuery = true)
+//  List<Room> findAllRooms();
+//
+//  @Query(value = "select r from Room r where r.roomStatus = 0", nativeQuery = true)
+//  List<Room> findAllAvailableRooms();
+//
+//  List<Room> getRoomsByRoomType(String roomType);
+//
+//  Room getRoomByRoomId(Long roomId);
 
 //    @Modifying(clearAutomatically = true)
 //    @Query("update Room room set room.roomStatus=?2 where room.roomId=?1")

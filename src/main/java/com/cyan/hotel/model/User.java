@@ -51,15 +51,15 @@ public class User {
   }
 
 
-    public Long getId() {
-        return id;
-    }
+  public Long getId() {
+	return id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+	this.id = id;
+  }
 
-    public String getFirstName() {
+  public String getFirstName() {
 	return firstName;
   }
 
@@ -99,36 +99,36 @@ public class User {
 	this.passwordConfirm = passwordConfirm;
   }
 
-    public Set<Event> getEvents() {
-        return events;
-    }
+  public Set<Event> getEvents() {
+	return events;
+  }
 
-    public void setEvents(Set<Event> events) {
-        this.events = events;
-    }
+  public void setEvents(Set<Event> events) {
+	this.events = events;
+  }
 
 
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
+  public int getPhoneNumber() {
+	return phoneNumber;
+  }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+  public void setPhoneNumber(int phoneNumber) {
+	this.phoneNumber = phoneNumber;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public String getEmail() {
+	return email;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public void setEmail(String email) {
+	this.email = email;
+  }
 
-    public int getIdentityCardNumber() {
-        return identityCardNumber;
-    }
+  public int getIdentityCardNumber() {
+	return identityCardNumber;
+  }
 
-    public void setIdentityCardNumber(int identityCardNumber) {
-        this.identityCardNumber = identityCardNumber;
-    }
+  public void setIdentityCardNumber(int identityCardNumber) {
+	this.identityCardNumber = identityCardNumber;
+  }
 }

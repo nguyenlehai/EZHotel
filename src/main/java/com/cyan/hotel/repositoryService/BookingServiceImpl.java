@@ -21,9 +21,7 @@ public class BookingServiceImpl implements BookingService {
 	// TODO: Add business logic
 	Booking booking = new Booking();
 	booking.setBookingDate(bookingDate);
-	booking.setNumberOfGuests(numberOfGuests);
 	booking.setUser(userService.findByUsername(username));
-	booking.setBookingTotal(bookingTotal);
 	bookingRepository.save(booking);
   }
 
