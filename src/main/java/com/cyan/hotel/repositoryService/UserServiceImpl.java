@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUserId(Long userId) {
-	return userRepository.findByUserId(userId);
+	return userRepository.findById(userId).get();
   }
 
   @Override
@@ -33,9 +33,5 @@ public class UserServiceImpl implements UserService {
 	return (user.equals(username.getUsername()));
   }
 
-  @Override
-  public void updateUserBalance(Long userId, Double currentBalance) {
 
-	userRepository.updateUserBalance(currentBalance, userId);
-  }
 }

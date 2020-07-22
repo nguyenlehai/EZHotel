@@ -23,7 +23,6 @@ public class HomeControllerTests {
   public void before() throws Exception {
 	user = new User();
 	user.setUsername("jlong");
-	user.setBalance(1000.0);
 	user.setPassword("1234");
 	user.setFirstName("john");
 	user.setLastName("long");

@@ -8,9 +8,9 @@ public interface UserService {
 
   void save(User user);
 
-  User findByUserId(Long userId);
+  User findByUserId(Long Id);
 
   boolean validateUser(String username, String password);
 
-  void updateUserBalance(Long userId, Double currentBalance);
+
 }

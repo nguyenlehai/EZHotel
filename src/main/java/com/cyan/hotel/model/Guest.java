@@ -3,81 +3,86 @@ package com.cyan.hotel.model;
 import com.cyan.hotel.enumeration.LoyatyLevel;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "guest")
-public class Guest extends User {
+public class Guest  {
 
-  @Column(name = "emailAddress", nullable = false)
-  private String emailAddress;
 
-  @Column(name = "phoneNumber", nullable = false)
-  private String phoneNumber;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-  @Enumerated(value = EnumType.STRING)
-  @Column(name = "loyaltyLevel")
-  private LoyatyLevel loyatyLevel;
+    @NotNull
+    private String firstName;
 
-  @OneToMany(mappedBy = "guest")
-  private List<Payment> payments;
+    @NotNull
+    private String lastName;
 
-  public Guest() {
+    @NotNull
+    private int phoneNumber;
+
+    @NotNull
+    private String email;
+
+    @NotNull
+    private int identityCardNumber;
+
+    @OneToMany(mappedBy = "guest")
+    Set<Booking> bookings;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getIdentityCardNumber() {
+        return identityCardNumber;
+    }
+
+    public void setIdentityCardNumber(int identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
+    }
+
+    public Guest() {
 
   }
 
-  public Guest(Builder<?> builder) {
-	super(builder);
-	this.emailAddress = builder.emailAddress;
-	this.phoneNumber = builder.phoneNumber;
-  }
-
-  public static Builder<?> builder() {
-	return new Builder<Guest>() {
-	  @Override
-	  public Guest build() {
-		return new Guest(this);
-	  }
-	};
-  }
-
-  public String getEmailAddress() {
-	return emailAddress;
-  }
-
-  public String getPhoneNumber() {
-	return phoneNumber;
-  }
-
-  public LoyatyLevel getLoyatyLevel() {
-	return loyatyLevel;
-  }
-
-  public void setLoyatyLevel(LoyatyLevel loyatyLevel) {
-	this.loyatyLevel = loyatyLevel;
-  }
-
-  public List<Payment> getPayments() {
-	return payments;
-  }
-
-  public void setPayments(List<Payment> payments) {
-	this.payments = payments;
-  }
-
-  public static abstract class Builder<T extends Guest> extends User.Builder<T> {
-
-	private String emailAddress;
-	private String phoneNumber;
-
-	public Builder<T> emailAddress(String emailAddress) {
-	  this.emailAddress = emailAddress;
-	  return this;
-	}
-
-	public Builder<T> phoneNumber(String phoneNumber) {
-	  this.phoneNumber = phoneNumber;
-	  return this;
-	}
-  }
 }

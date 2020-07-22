@@ -5,49 +5,48 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
-@Table(name = "event")
 public class Event {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "eventId")
-  private Long eventId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-  @Column(name = "eventDesc")
-  @Length(max = 500)
-  private String eventDesc;
+    private String eventDescription;
 
-  @Column(name = "eventDate")
-  @DateTimeFormat(pattern = "dd/MM/yyyy")
-  private Date eventDate;
+    private int eventDiscount;
 
-  public Event() {
+    @ManyToMany (mappedBy = "events")
+    Set<User> userSet;
 
-  }
 
-  public Long getEventId() {
-	return eventId;
-  }
+    public Event() {
 
-  public void setEventId(Long eventId) {
-	this.eventId = eventId;
-  }
+    }
 
-  public String getEventDesc() {
-	return eventDesc;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setEventDesc(String eventDesc) {
-	this.eventDesc = eventDesc;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public Date getEventDate() {
-	return eventDate;
-  }
+    public String getEventDescription() {
+        return eventDescription;
+    }
 
-  public void setEventDate(Date eventDate) {
-	this.eventDate = eventDate;
-  }
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public int getEventDiscount() {
+        return eventDiscount;
+    }
+
+    public void setEventDiscount(int eventDiscount) {
+        this.eventDiscount = eventDiscount;
+    }
 }

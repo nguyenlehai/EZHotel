@@ -1,70 +1,65 @@
 package com.cyan.hotel.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
 
 // TODO: JOINED ? TABLE_PER_CLASS
 @Entity
-@Table(name = "user")
+
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
   // TODO: IDENTITY ? TABLE
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "userId")
-  private Long userId;
+  private Long id;
 
-  @Column(name = "firstName", nullable = false)
+  @NotNull
   private String firstName;
 
-  @Column(name = "lastName", nullable = false)
+  @NotNull
   private String lastName;
 
-  @Column(name = "username")
+  @NotNull
   private String username;
 
-  @Column(name = "password")
+  @NotNull
   private String password;
 
   @Transient
   private String passwordConfirm;
 
-  @Column
-  private Double balance;
+  @NotNull
+  private int phoneNumber;
+
+  @NotNull
+  private String email;
+
+  @NotNull
+  private int identityCardNumber;
+
+
+  @ManyToMany
+  Set<Event> events;
 
   @OneToMany(mappedBy = "user")
-  private List<Payment> payments;
+  Set<Booking> bookings;
 
   public User() {
 
   }
 
-  public User(Builder<?> builder) {
-	this.firstName = builder.firstName;
-	this.lastName = builder.lastName;
-	this.username = builder.username;
-	this.password = builder.password;
-	this.balance = builder.balance;
-  }
 
-  public static Builder<?> builder() {
-	return new Builder<User>() {
-	  @Override
-	  public User build() {
-		return new User(this);
-	  }
-	};
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public Long getUserId() {
-	return userId;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public void setUserId(Long userId) {
-	this.userId = userId;
-  }
-
-  public String getFirstName() {
+    public String getFirstName() {
 	return firstName;
   }
 
@@ -104,55 +99,36 @@ public class User {
 	this.passwordConfirm = passwordConfirm;
   }
 
-  public Double getBalance() {
-	return balance;
-  }
+    public Set<Event> getEvents() {
+        return events;
+    }
 
-  public void setBalance(Double balance) {
-	this.balance = balance;
-  }
-
-  public List<Payment> getPayments() {
-	return payments;
-  }
-
-  public void setPayments(List<Payment> payments) {
-	this.payments = payments;
-  }
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 
 
-  public static abstract class Builder<T extends User> {
-	private String firstName;
-	private String lastName;
-	private String username;
-	private String password;
-	private Double balance;
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	public Builder<T> firstName(String firstName) {
-	  this.firstName = firstName;
-	  return this;
-	}
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public Builder<T> lastName(String lastName) {
-	  this.lastName = lastName;
-	  return this;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Builder<T> username(String username) {
-	  this.username = username;
-	  return this;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public Builder<T> password(String password) {
-	  this.password = password;
-	  return this;
-	}
+    public int getIdentityCardNumber() {
+        return identityCardNumber;
+    }
 
-	public Builder<T> balance(Double balance) {
-	  this.balance = balance;
-	  return this;
-	}
-
-	public abstract T build();
-  }
+    public void setIdentityCardNumber(int identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
+    }
 }

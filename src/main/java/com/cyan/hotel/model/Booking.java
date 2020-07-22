@@ -5,27 +5,29 @@ import javax.validation.constraints.Pattern;
 import java.util.Observer;
 
 @Entity
-@Table(name = "booking")
 public class Booking {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "bookingId")
   private Long bookingId;
 
-  @Column(name = "bookingDate")
+
   @Pattern(regexp = "dd/MM/yyyy")
   private String bookingDate;
 
-  @Column(name = "numberOfGuests")
+
   private Integer numberOfGuests;
 
-  @Column(name = "bookingTotal")
+
   private Double bookingTotal;
 
   @ManyToOne
-  @JoinColumn(name = "userId")
+  @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
   private User user;
+
+  @ManyToOne
+  @JoinColumn(name = "guest_id", nullable = false, insertable = false, updatable = false)
+  private Guest guest;
 
   @Transient
   private Observer observer;

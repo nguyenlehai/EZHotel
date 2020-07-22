@@ -75,36 +75,13 @@ public class BookingController {
   private Double getTotalPrice(String extrasList, String roomType, Double price) {
 
 	Room room = null;
-	if (roomType.equalsIgnoreCase("EXECUTIVE")) {
-	  room = new ExecutiveRoom();
-	} else if (roomType.equalsIgnoreCase("SINGLE")) {
-	  room = new SingleRoom();
-	} else if (roomType.equalsIgnoreCase("DOUBLE")) {
-	  room = new DoubleRoom();
-	} else if (roomType.equalsIgnoreCase("JUNIORSUITE")) {
-	  room = new JuniorSuiteRoom();
-	}
+
 
 	if (extrasList != null) {
 	  String[] values = extrasList.split(",");
 	  List<String> extras = new ArrayList<>(Arrays.asList(values));
 
-	  for (String extra : extras) {
-		switch (extra) {
-		  case "AC":
-			room = new withAC(room);
-			break;
-		  case "BottleOfWine":
-			room = new withBottleOfWine(room);
-			break;
-		  case "Dinner":
-			room = new withDinner(room);
-			break;
-		  case "WiFi":
-			room = new withWiFi(room);
-			break;
-		}
-	  }
+
 	  assert room != null;
 	  return room.getPrice();
 	}
