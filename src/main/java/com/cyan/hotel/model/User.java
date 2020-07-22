@@ -2,15 +2,12 @@ package com.cyan.hotel.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
-// TODO: JOINED ? TABLE_PER_CLASS
 @Entity
 
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
-  // TODO: IDENTITY ? TABLE
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -49,7 +46,6 @@ public class User {
   public User() {
 
   }
-
 
   public Long getId() {
 	return id;

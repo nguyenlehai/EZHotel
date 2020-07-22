@@ -9,9 +9,7 @@ public class Service {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
   private String service_name;
-
 
   private Float service_cost;
 

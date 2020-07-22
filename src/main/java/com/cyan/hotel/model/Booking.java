@@ -10,20 +10,15 @@ public class Booking {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})")
   private String bookingDate;
 
-
   private Float bookingTotal;
-
 
   private String bookingCode;
 
-
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
   private String checkInDate;
-
 
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
   private String checkOutDate;
@@ -42,17 +37,6 @@ public class Booking {
   public Booking() {
 
   }
-
-//    public void setBookingTotal(Observer observer, Integer newBookingTotal) {
-//        int result = bookingTotal.compareTo(newBookingTotal);
-//        if(result==-1){
-//            this.observer = observer;
-//            this.bookingTotal = newBookingTotal;
-//            setChanged();
-//            notifyObservers();
-//        }
-//    }
-
 
   public Long getId() {
 	return id;

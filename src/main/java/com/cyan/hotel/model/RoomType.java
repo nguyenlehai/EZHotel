@@ -11,7 +11,6 @@ public class RoomType {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-
   @Enumerated(EnumType.STRING)
   private RoomStyle type;
 
@@ -19,11 +18,11 @@ public class RoomType {
   Set<Room> rooms;
 
   public Long getId() {
-    return id;
+	return id;
   }
 
   public void setId(Long id) {
-    this.id = id;
+	this.id = id;
   }
 
   public RoomStyle getType() {

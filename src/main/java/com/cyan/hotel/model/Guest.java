@@ -1,10 +1,7 @@
 package com.cyan.hotel.model;
 
-import com.cyan.hotel.enumeration.LoyatyLevel;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Set;
 
 @Entity
