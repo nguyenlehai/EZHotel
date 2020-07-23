@@ -2,24 +2,29 @@ package com.cyan.hotel.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
-import java.util.Observer;
+import java.util.Set;
 
 @Entity
 public class Booking {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long bookingId;
+  private Long id;
 
-
-  @Pattern(regexp = "dd/MM/yyyy")
+  @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})")
   private String bookingDate;
 
+  private Float bookingTotal;
 
-  private Integer numberOfGuests;
+  private String bookingCode;
 
+  @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
+  private String checkInDate;
 
-  private Double bookingTotal;
+  @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
+  private String checkOutDate;
+
+  @ManyToMany
+  Set<Room> rooms;
 
   @ManyToOne
   @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
@@ -29,49 +34,64 @@ public class Booking {
   @JoinColumn(name = "guest_id", nullable = false, insertable = false, updatable = false)
   private Guest guest;
 
-  @Transient
-  private Observer observer;
-
   public Booking() {
 
   }
 
-  public Observer getObserver() {
-	return observer;
+  public Long getId() {
+	return id;
   }
 
-//    public void setBookingTotal(Observer observer, Integer newBookingTotal) {
-//        int result = bookingTotal.compareTo(newBookingTotal);
-//        if(result==-1){
-//            this.observer = observer;
-//            this.bookingTotal = newBookingTotal;
-//            setChanged();
-//            notifyObservers();
-//        }
-//    }
-
-  public void setBookingId(Long bookingId) {
-	this.bookingId = bookingId;
+  public void setId(Long id) {
+	this.id = id;
   }
 
-  public Long getBookingId() {
-	return bookingId;
+  public String getBookingDate() {
+	return bookingDate;
   }
 
   public void setBookingDate(String bookingDate) {
 	this.bookingDate = bookingDate;
   }
 
-  public Integer getNumberOfGuests() {
-	return numberOfGuests;
+  public Float getBookingTotal() {
+	return bookingTotal;
   }
 
-  public void setNumberOfGuests(Integer numberOfGuests) {
-	this.numberOfGuests = numberOfGuests;
+  public void setBookingTotal(Float bookingTotal) {
+	this.bookingTotal = bookingTotal;
   }
 
-  public String getBookingDate() {
-	return bookingDate;
+  public String getBookingCode() {
+	return bookingCode;
+  }
+
+  public void setBookingCode(String bookingCode) {
+	this.bookingCode = bookingCode;
+  }
+
+  public String getCheckInDate() {
+	return checkInDate;
+  }
+
+  public void setCheckInDate(String checkInDate) {
+	this.checkInDate = checkInDate;
+  }
+
+  public String getCheckOutDate() {
+	return checkOutDate;
+  }
+
+  public void setCheckOutDate(String checkOutDate) {
+	this.checkOutDate = checkOutDate;
+  }
+
+  public Set<Room> getRooms() {
+	return rooms;
+  }
+
+  public void setRooms(Set<Room> rooms) {
+	this.rooms = rooms;
   }
 
   public User getUser() {
@@ -82,11 +102,11 @@ public class Booking {
 	this.user = user;
   }
 
-  public void setBookingTotal(Double bookingTotal) {
-	this.bookingTotal = bookingTotal;
+  public Guest getGuest() {
+	return guest;
   }
 
-  public Double getBookingTotal() {
-	return bookingTotal;
+  public void setGuest(Guest guest) {
+	this.guest = guest;
   }
 }
