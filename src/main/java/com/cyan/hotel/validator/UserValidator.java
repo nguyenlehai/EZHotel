@@ -28,6 +28,16 @@ public class UserValidator implements Validator {
       errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
     }
 
+    if (userService.existByUsername(registerForm.getUsername())){
+      errors.rejectValue("username", "Duplicate.userForm.username");
+    }
+
+    if (userService.existByEmail(registerForm.getEmail())){
+      errors.rejectValue("email", "Duplicate.userForm.email");
+    }
+
+
+
   }
 
   public void validateLogin(Errors errors, String username, String password) {

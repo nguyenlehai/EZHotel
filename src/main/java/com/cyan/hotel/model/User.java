@@ -1,8 +1,6 @@
 package com.cyan.hotel.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
 
@@ -26,18 +24,13 @@ public class User {
   @NotNull
   private String password;
 
-  @Transient
-  private String passwordConfirm;
 
   @NotNull
   private String phoneNumber;
 
   @NotNull
-  @NotBlank
-  @NotEmpty
   private String email;
 
-  @NotNull
   private String identityCardNumber;
 
 
@@ -89,14 +82,6 @@ public class User {
 
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public String getPasswordConfirm() {
-    return passwordConfirm;
-  }
-
-  public void setPasswordConfirm(String passwordConfirm) {
-    this.passwordConfirm = passwordConfirm;
   }
 
   public Set<Event> getEvents() {

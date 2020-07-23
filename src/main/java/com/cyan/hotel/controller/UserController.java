@@ -1,6 +1,6 @@
 package com.cyan.hotel.controller;
 
-import com.cyan.hotel.AES;
+import com.cyan.hotel.encryption.EncryptionAES;
 import com.cyan.hotel.model.User;
 import com.cyan.hotel.repositoryService.UserService;
 import com.cyan.hotel.requestForm.RegisterForm;
@@ -13,16 +13,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.security.SecureRandom;
-import java.util.Base64;
 
 @Controller
 public class UserController {
 
 
   final String secretKey = "SecretKey";
-  private static final SecureRandom secureRandom = new SecureRandom(); //threadsafe
-  private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder(); //threadsafe
+
 
   @Autowired
   private UserService userService;
@@ -46,7 +43,7 @@ public class UserController {
       return "register";
     }
     User newUser = new User();
-    String encryptedPassword = AES.encrypt(registerForm.getPassword(), secretKey);
+    String encryptedPassword = EncryptionAES.encrypt(registerForm.getPassword(), secretKey);
     newUser.setPassword(encryptedPassword);
     newUser.setFirstName(registerForm.getFirstName());
     newUser.setLastName(registerForm.getLastName());

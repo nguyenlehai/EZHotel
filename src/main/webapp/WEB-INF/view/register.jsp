@@ -6,89 +6,92 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <c:url value="/main/webapp/resources/main.css" var="jstlCss"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <link href="${jstlCss}" rel="stylesheet"/>
-    <link href="<c:url value="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"/>"
-          rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript" src="../../resources/main.js"></script>
+
     <title>Register</title>
 </head>
 <body>
 
 <div class="container">
     <%--@elvariable id="registerForm" type="com.cyan.hotel.requestForm.RegisterForm"--%>
-    <form:form class="form-register" modelAttribute="registerForm" method="POST">
+    <form:form id="register" class="form-register" modelAttribute="registerForm" method="POST">
         <h2 class="form-header">Register</h2>
-        <div>First name</div>
+        <div><b> First name</b></div>
         <spring:bind path="firstName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="firstName" class="form-control"
-                            placeholder="First Name"/>
-                <form:errors path="firstName"/>
+                <form:input type="text" path="firstName" name="firstName" class="form-control"
+                            placeholder="First Name" required="true"/>
+                <form:errors cssClass="alert-danger" path="firstName"/>
             </div>
         </spring:bind>
 
-        <div>Last name</div>
+        <div><b>Last name</b></div>
         <spring:bind path="lastName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="lastName" class="form-control"
+                <form:input type="text" path="lastName" class="form-control" name="lastName"
                             placeholder="Last Name"/>
-                <form:errors path="lastName"/>
+                <form:errors cssClass="alert-danger" path="lastName"/>
             </div>
         </spring:bind>
 
-        <div>User name</div>
+        <div><b>User name</b></div>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" cssClass="form-control" placeholder="Username"
+                <form:input type="text" path="username" cssClass="form-control" placeholder="Username" name="username"
                 />
-                <form:errors path="username"/>
+                <form:errors cssClass="alert-danger" path="username"/>
             </div>
         </spring:bind>
 
-        <div>Password</div>
+        <div><b>Password</b></div>
         <spring:bind path="password">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"/>
-                <form:errors path="password"/>
+                <form:input type="password" path="password" class="form-control" name="password"
+                            placeholder="Password"/>
+                <form:errors cssClass="alert-danger" path="password"/>
             </div>
         </spring:bind>
 
-        <div>Confirm password</div>
+        <div><b>Confirm password</b></div>
         <spring:bind path="passwordConfirm">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="passwordConfirm" class="form-control"
+                <form:input type="password" path="passwordConfirm" class="form-control" name="passwordConfirm"
                             placeholder="Confirm your password"/>
-                <form:errors path="passwordConfirm"/>
+                <form:errors cssClass="alert-danger" path="passwordConfirm"/>
             </div>
         </spring:bind>
 
-        <div>Email</div>
+        <div><b>Email</b></div>
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="email" class="form-control"
+                <form:input type="text" path="email" class="form-control" name="email"
                             placeholder="Email Address"/>
-                <form:errors path="email"/>
+                <form:errors cssClass="alert-danger" path="email"/>
             </div>
         </spring:bind>
 
-        <div>Phone number</div>
+        <div><b>Phone number</b></div>
         <spring:bind path="phoneNumber">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="phoneNumber" class="form-control"
+                <form:input type="text" path="phoneNumber" class="form-control" name="phoneNumber"
                             placeholder="Phone Number"/>
-                <form:errors path="phoneNumber"/>
+                <form:errors cssClass="alert-danger" path="phoneNumber"/>
             </div>
         </spring:bind>
 
-        <div>Identity Card Number</div>
+        <div><b>Identity Card Number</b></div>
         <spring:bind path="identityCardNumber">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="identityCardNumber" class="form-control"
                             placeholder="Identity Card Number"/>
-                <form:errors path="identityCardNumber"/>
+                <form:errors cssClass="alert-danger" path="identityCardNumber"/>
             </div>
         </spring:bind>
 

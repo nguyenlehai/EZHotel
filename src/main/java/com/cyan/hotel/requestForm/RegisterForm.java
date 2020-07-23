@@ -1,42 +1,41 @@
 package com.cyan.hotel.requestForm;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 public class RegisterForm {
 
   @NotNull(message = "First name is required !")
   @NotEmpty(message = "First name is required !")
+  @Size(max = 256, message = "First name too long")
   private String firstName;
 
   @NotNull(message = "Last name is required !")
   @NotEmpty(message = "Last name is required !")
+  @Size(max = 256, message = "Last name too long")
   private String lastName;
 
   @NotNull(message = "Username is required !")
   @NotEmpty(message = "Username is required !")
-  @NotBlank(message = "Username is required !")
+  @Size(min = 6, max = 256 , message = "Username is between 6 and 256 characters ")
   private String username;
 
   @NotNull(message = "Password is required !")
   @NotEmpty(message = "Password is required !")
+  @Size(min = 6, max = 256 , message = "Password is between 6 and 256 characters ")
   private String password;
 
   private String passwordConfirm;
 
-  @NotNull(message = "Email is required !")
-  @NotEmpty(message = "Email is required !")
+
+  @Pattern(regexp = "^[0-9?A-z0-9?]+(\\.)?[0-9?A-z0-9?]+@[A-z]+\\.[A-z]{3}.?[A-z]{0,3}$", message = "Email's format is not true")
   private String email;
 
-  @NotNull(message = "Phone number is required !")
-  @NotEmpty(message = "Phone number is required !")
+
+  @Pattern(regexp = "(03|07|08|09|01[2|6|8|9])+([0-9]{8})\\b", message = "Phone number's format is not true ")
   private String phoneNumber;
 
-  @NotNull(message = "Identity Card Number is required !")
-  @NotEmpty(message = "Identity Card Number is required !")
-  private String identityCardNumber;
 
+  private String identityCardNumber;
 
   public RegisterForm() {
 
