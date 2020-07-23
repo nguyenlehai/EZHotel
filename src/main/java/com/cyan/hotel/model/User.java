@@ -24,17 +24,14 @@ public class User {
   @NotNull
   private String password;
 
-  @Transient
-  private String passwordConfirm;
 
   @NotNull
-  private int phoneNumber;
+  private String phoneNumber;
 
   @NotNull
   private String email;
 
-  @NotNull
-  private int identityCardNumber;
+  private String identityCardNumber;
 
 
   @ManyToMany
@@ -48,83 +45,75 @@ public class User {
   }
 
   public Long getId() {
-	return id;
+    return id;
   }
 
   public void setId(Long id) {
-	this.id = id;
+    this.id = id;
   }
 
   public String getFirstName() {
-	return firstName;
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
-	this.firstName = firstName;
+    this.firstName = firstName;
   }
 
   public String getLastName() {
-	return lastName;
+    return lastName;
   }
 
   public String getUsername() {
-	return username;
+    return username;
   }
 
   public String getPassword() {
-	return password;
+    return password;
   }
 
   public void setLastName(String lastName) {
-	this.lastName = lastName;
+    this.lastName = lastName;
   }
 
   public void setUsername(String username) {
-	this.username = username;
+    this.username = username;
   }
 
   public void setPassword(String password) {
-	this.password = password;
-  }
-
-  public String getPasswordConfirm() {
-	return passwordConfirm;
-  }
-
-  public void setPasswordConfirm(String passwordConfirm) {
-	this.passwordConfirm = passwordConfirm;
+    this.password = password;
   }
 
   public Set<Event> getEvents() {
-	return events;
+    return events;
   }
 
   public void setEvents(Set<Event> events) {
-	this.events = events;
+    this.events = events;
   }
 
 
-  public int getPhoneNumber() {
-	return phoneNumber;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  public void setPhoneNumber(int phoneNumber) {
-	this.phoneNumber = phoneNumber;
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 
   public String getEmail() {
-	return email;
+    return email;
   }
 
   public void setEmail(String email) {
-	this.email = email;
+    this.email = email;
   }
 
-  public int getIdentityCardNumber() {
-	return identityCardNumber;
+  public String getIdentityCardNumber() {
+    return identityCardNumber;
   }
 
-  public void setIdentityCardNumber(int identityCardNumber) {
-	this.identityCardNumber = identityCardNumber;
+  public void setIdentityCardNumber(String identityCardNumber) {
+    this.identityCardNumber = identityCardNumber;
   }
 }
