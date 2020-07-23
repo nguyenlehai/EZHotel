@@ -18,9 +18,10 @@
 <body>
 
 <div class="container">
-    <%--@elvariable id="userForm" type="com.cyan.hotel.model.User"--%>
-    <form:form class="form-register" modelAttribute="userForm" method="POST">
+    <%--@elvariable id="registerForm" type="com.cyan.hotel.requestForm.RegisterForm"--%>
+    <form:form class="form-register" modelAttribute="registerForm" method="POST">
         <h2 class="form-header">Register</h2>
+        <div>First name</div>
         <spring:bind path="firstName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="firstName" class="form-control"
@@ -29,6 +30,7 @@
             </div>
         </spring:bind>
 
+        <div>Last name</div>
         <spring:bind path="lastName">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="lastName" class="form-control"
@@ -37,14 +39,16 @@
             </div>
         </spring:bind>
 
+        <div>User name</div>
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="username" cssClass="form-control" placeholder="Username"
-                            autofocus="true"/>
+                />
                 <form:errors path="username"/>
             </div>
         </spring:bind>
 
+        <div>Password</div>
         <spring:bind path="password">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="password" path="password" class="form-control" placeholder="Password"/>
@@ -52,6 +56,7 @@
             </div>
         </spring:bind>
 
+        <div>Confirm password</div>
         <spring:bind path="passwordConfirm">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="password" path="passwordConfirm" class="form-control"
@@ -60,21 +65,32 @@
             </div>
         </spring:bind>
 
-        <%--        <spring:bind path="emailAddress">--%>
-        <%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-        <%--                <form:input type="text" path="emailAddress" class="form-control"--%>
-        <%--                            placeholder="Email Address"/>--%>
-        <%--                <form:errors path="emailAddress"/>--%>
-        <%--            </div>--%>
-        <%--        </spring:bind>--%>
+        <div>Email</div>
+        <spring:bind path="email">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="email" class="form-control"
+                            placeholder="Email Address"/>
+                <form:errors path="email"/>
+            </div>
+        </spring:bind>
 
-        <%--        <spring:bind path="phoneNumber">--%>
-        <%--            <div class="form-group ${status.error ? 'has-error' : ''}">--%>
-        <%--                <form:input type="text" path="phoneNumber" class="form-control"--%>
-        <%--                            placeholder="Phone Number"/>--%>
-        <%--                <form:errors path="phoneNumber"/>--%>
-        <%--            </div>--%>
-        <%--        </spring:bind>--%>
+        <div>Phone number</div>
+        <spring:bind path="phoneNumber">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="phoneNumber" class="form-control"
+                            placeholder="Phone Number"/>
+                <form:errors path="phoneNumber"/>
+            </div>
+        </spring:bind>
+
+        <div>Identity Card Number</div>
+        <spring:bind path="identityCardNumber">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="identityCardNumber" class="form-control"
+                            placeholder="Identity Card Number"/>
+                <form:errors path="identityCardNumber"/>
+            </div>
+        </spring:bind>
 
         <button class="btn btn-primary" type="submit">Register</button>
     </form:form>
