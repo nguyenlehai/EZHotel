@@ -2,11 +2,11 @@
 <%@ page isErrorPage="true" %>
 <html>
 <head>
-    <title>Error</title>
+  <title>Error</title>
 </head>
 <body>
 <div style="color: #FF0000;">
-    Error message: <%= exception.toString() %>
+  Error message: <%= exception.toString() %>
 </div>
 </body>
 </html>

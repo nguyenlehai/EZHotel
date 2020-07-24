@@ -1,6 +1,6 @@
 package com.cyan.hotel.controller;
 
-import com.cyan.hotel.model.*;
+import com.cyan.hotel.model.Room;
 import com.cyan.hotel.repositoryService.BookingService;
 import com.cyan.hotel.repositoryService.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +24,6 @@ public class BookingController {
 
   @Autowired
   private BookingService bookingService;
-
-//    @GetMapping(value = "/booking")
-//    public String booking() {
-//        return "booking";
-//    }
 
   @GetMapping(value = "/booking/{roomId}")
   public String getRoomIdForBooking(@PathVariable Long roomId, Model model) {
@@ -54,18 +49,12 @@ public class BookingController {
 	  SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	  Date date = new Date();
 	  bookingService.insertBooking(formatter.format(date), numOfGuests, bookingTotalPrice, username);
-	  //roomService.updateRoomStatus(roomId, 0);
 
 	  return "redirect:/payment/" + username + "/" + bookingTotalPrice;
 	} else {
 	  return "redirect:/booking/failed/";
 	}
   }
-
-//    @GetMapping(value = "booking/success/")
-//    public String success() {
-//        return "home";
-//    }
 
   @GetMapping(value = "/booking/failed/")
   public String failed() {
@@ -76,11 +65,9 @@ public class BookingController {
 
 	Room room = null;
 
-
 	if (extrasList != null) {
 	  String[] values = extrasList.split(",");
 	  List<String> extras = new ArrayList<>(Arrays.asList(values));
-
 
 	  assert room != null;
 	}

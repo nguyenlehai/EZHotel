@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookingServiceImpl implements BookingService {
-
   @Autowired
   BookingRepository bookingRepository;
 
@@ -18,7 +17,6 @@ public class BookingServiceImpl implements BookingService {
   @Override
   public void insertBooking(String bookingDate, Integer numberOfGuests,
 							Double bookingTotal, String username) {
-	// TODO: Add business logic
 	Booking booking = new Booking();
 	booking.setBookingDate(bookingDate);
 	booking.setUser(userService.findByUsername(username));

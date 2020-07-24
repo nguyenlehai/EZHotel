@@ -19,7 +19,6 @@ public abstract class Room {
   @JoinColumn(name = "room_type_id", nullable = false, insertable = false, updatable = false)
   private RoomType room_type;
 
-
   @ManyToMany(mappedBy = "rooms")
   Set<Booking> bookings;
 
