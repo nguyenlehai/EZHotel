@@ -24,18 +24,18 @@
   <table class="table table-bordered table-condensed">
     <thead>
     <tr>
-      <th>Student Name</th>
-      <th>ID Number</th>
+      <th>Name</th>
+      <th>Email</th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td>Naichuan Zhang</td>
-      <td>18111521</td>
+      <td>Nguyeen Le Hai</td>
+      <td>nguyenle.hai@bigtreetc.com</td>
     </tr>
     <tr>
-      <td>John Long</td>
-      <td>12132306</td>
+      <td>Nguyen Tien Tuan Anh</td>
+      <td>mato9898@gmail.com</td>
     </tr>
     </tbody>
   </table>

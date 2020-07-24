@@ -6,15 +6,13 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  <link rel="stylesheet" href="../../resources/css/bootstrap.min.4.5.0.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+  <script src="../../resources/js/jquery.min.js"></script>
+  <script src="../../resources/js/bootstrap.min.4.5.0.js"></script>
+  <script src="../../resources/js/jquery.validate.js"></script>
   <link href="${jstlCss}" rel="stylesheet"/>
-
   <script type="text/javascript" src="../../resources/main.js"></script>
-
   <title>LOGIN</title>
 </head>
 
