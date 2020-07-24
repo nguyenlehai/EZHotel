@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-// in order to execute update operation
 @Transactional
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -20,4 +19,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
   Optional<User> findById(Long id);
 
+  Boolean existsByUsernameAndPassword(String username, String password);
 }

@@ -1,12 +1,10 @@
 package com.cyan.hotel.model;
 
 import javax.persistence.*;
-
 import java.util.Set;
 
 @Entity
 public class Event {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
@@ -17,7 +15,6 @@ public class Event {
 
   @ManyToMany(mappedBy = "events")
   Set<User> users;
-
 
   public Event() {
 

@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Admin {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
