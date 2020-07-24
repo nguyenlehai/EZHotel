@@ -24,12 +24,12 @@
   <table class="table table-condensed table-bordered">
     <thead>
     <tr>
-      <th>Naichuan Zhang</th>
-      <th>18111521@studentmail.ul.ie</th>
+      <th>Nguyeen Le Hai</th>
+      <th>nguyenle.hai@bigtreetc.com</th>
     </tr>
     <tr>
-      <th>John Long</th>
-      <th>12132306@studentmail.ul.ie</th>
+      <th>Nguyen Tien Tuan Anh</th>
+      <th>mato9898@gmail.com</th>
     </tr>
     </thead>
   </table>
