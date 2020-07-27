@@ -18,22 +18,15 @@ public class RoomServiceImpl implements RoomService {
   }
 
   @Override
-  public List<Room> findAllRooms() {
-	return null;
+  public List<Room> findAll() {
+    return roomRepository.findAll();
   }
 
-  @Override
-  public List<Room> findAllAvailableRooms() {
-	return null;
-  }
 
   @Override
   public List<Room> getRoomsByRoomType(String roomType) {
 	return null;
   }
 
-  @Override
-  public void updateRoomStatus(Long roomId, Integer roomStatus) {
-	//roomRepository.updateRoomStatus(roomId, roomStatus);
-  }
+
 }

@@ -33,4 +33,8 @@
     </div>
   </div>
 </nav>
-<div class="mb-2 bg-info text-white text-center">Ez Hotel</div>
+<div class="container">
+  <div class="starter-template bg-primary text-center">
+    <h1>Ez Hotel</h1>
+  </div>
+</div>

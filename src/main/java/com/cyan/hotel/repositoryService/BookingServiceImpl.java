@@ -1,10 +1,13 @@
 package com.cyan.hotel.repositoryService;
 
+import com.cyan.hotel.dto.AdminBookingDTO;
 import com.cyan.hotel.model.Booking;
 import com.cyan.hotel.model.User;
 import com.cyan.hotel.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BookingServiceImpl implements BookingService {
@@ -28,5 +31,10 @@ public class BookingServiceImpl implements BookingService {
 	Long userId = user.getId();
 	return bookingRepository
 			.findBookingByUser(userService.findByUserId(userId));
+  }
+
+  @Override
+  public List<Booking> findAll() {
+    return bookingRepository.findAll();
   }
 }
