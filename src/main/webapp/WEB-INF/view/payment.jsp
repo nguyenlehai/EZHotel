@@ -61,7 +61,7 @@
   <input class="btn btn-primary" id="payment" type="submit" value="Pay Now">
 </form>
 
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/bootstrap.min.3.3.7.js"></script>
 <script src="../../resources/main.js"></script>
 
 </body>
