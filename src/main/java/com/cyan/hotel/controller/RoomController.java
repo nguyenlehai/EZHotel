@@ -29,6 +29,15 @@ public class RoomController {
 	return model;
   }
 
+  @GetMapping(value = "/room/chooseRoom")
+  public ModelAndView chooseRoom() {
+	List<RoomStyle> roomTypes = getRoomTypes();
+
+	ModelAndView model = new ModelAndView("chooseRoom");
+	model.addObject("roomTypesList", roomTypes);
+	return model;
+  }
+
   @GetMapping(value = "/room/show/{roomType}")
   public String getRoomType(@PathVariable String roomType, Model model) {
 
