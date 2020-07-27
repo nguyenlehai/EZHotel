@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../resources/js/bootstrap.min.3.3.7.js"/>
   <c:url value="../../resources/main.css" var="jstlCss"/>
   <link href="${jstlCss}" rel="stylesheet"/>
   <title>Contact</title>
@@ -35,7 +35,7 @@
   </table>
 </div>
 
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../resources/js/bootstrap.min.3.3.7.js"></script>
 <script src="../../resources/main.js"></script>
 </body>
 </html>
