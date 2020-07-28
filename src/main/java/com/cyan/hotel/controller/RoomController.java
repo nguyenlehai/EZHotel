@@ -3,7 +3,6 @@ package com.cyan.hotel.controller;
 import com.cyan.hotel.enumeration.RoomStyle;
 import com.cyan.hotel.model.Room;
 import com.cyan.hotel.repositoryService.RoomService;
-import com.cyan.hotel.requestForm.LoginForm;
 import com.cyan.hotel.requestForm.ReservationForm;
 import com.cyan.hotel.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +28,7 @@ public class RoomController {
 
   @GetMapping(value = "/room")
   public ModelAndView show() {
-	List<RoomStyle> roomTypes = getRoomTypes();
-
-	ModelAndView model = new ModelAndView("room");
-	model.addObject("reservationForm", roomTypes);
-	return model;
+	return new ModelAndView("room");
   }
 
   @PostMapping(value = "/room")
@@ -44,7 +39,6 @@ public class RoomController {
 	if (result.hasErrors()) {
 	  return "room";
 	}
-	model.addAttribute("reservationForm", new LoginForm());
 	return "redirect:/room/chooseRoom";
   }
 

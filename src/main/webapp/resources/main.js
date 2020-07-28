@@ -80,18 +80,18 @@ $(document).ready(function () {
   });
   $('#reservation_book_room').validate({
 	rules: {
-	  start_date: {
+	  startDate: {
 		required: true
 	  },
-	  end_date: {
+	  endDate: {
 		required: true
 	  }
 	},
 	messages: {
-	  start_date: {
+	  startDate: {
 		required: "Start date is required"
 	  },
-	  end_date: {
+	  endDate: {
 		required: "End date is required"
 	  }
 	}
