@@ -4,7 +4,7 @@ import com.cyan.hotel.enumeration.RoomStyle;
 import com.cyan.hotel.model.Room;
 import com.cyan.hotel.repositoryService.RoomService;
 import com.cyan.hotel.requestForm.LoginForm;
-import com.cyan.hotel.requestForm.RevervationForm;
+import com.cyan.hotel.requestForm.ReservationForm;
 import com.cyan.hotel.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,9 +37,9 @@ public class RoomController {
   }
 
   @PostMapping(value = "/room")
-  public String goToChooseRoomPage(@Valid @ModelAttribute("reservation_book_room") RevervationForm revervationForm,
+  public String goToChooseRoomPage(@Valid @ModelAttribute("reservation_book_room") ReservationForm reservationForm,
 								   BindingResult result, Model model) throws ParseException {
-	inputValidator.validateRevervationRoom(revervationForm, result);
+	inputValidator.validateReservationRoom(reservationForm, result);
 
 	if (result.hasErrors()) {
 	  return "room";
@@ -50,10 +50,7 @@ public class RoomController {
 
   @GetMapping(value = "/room/chooseRoom")
   public ModelAndView chooseRoom() {
-	List<RoomStyle> roomTypes = getRoomTypes();
-
 	ModelAndView model = new ModelAndView("chooseRoom");
-	model.addObject("roomTypesList", roomTypes);
 	return model;
   }
 

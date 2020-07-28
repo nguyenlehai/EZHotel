@@ -5,7 +5,7 @@ import com.cyan.hotel.model.User;
 import com.cyan.hotel.repositoryService.AdminService;
 import com.cyan.hotel.repositoryService.UserService;
 import com.cyan.hotel.requestForm.RegisterForm;
-import com.cyan.hotel.requestForm.RevervationForm;
+import com.cyan.hotel.requestForm.ReservationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -65,16 +65,16 @@ public class InputValidator implements Validator {
 	}
   }
 
-  public void validateRevervationRoom(Object o, Errors errors) throws ParseException {
-	RevervationForm revervationForm = (RevervationForm) o;
+  public void validateReservationRoom(Object o, Errors errors) throws ParseException {
+	ReservationForm reservationForm = (ReservationForm) o;
 
 	Date dateToday = new SimpleDateFormat("MM/dd/yyyy").parse(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
-	Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(revervationForm.getStart_date());
-	Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(revervationForm.getEnd_date());
+	Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(reservationForm.getStartDate());
+	Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(reservationForm.getEndDate());
 
 	if (!((startDate.equals(dateToday) && (endDate.equals(startDate) || endDate.after(startDate)))
 			|| (startDate.after(dateToday) && (endDate.after(startDate) || endDate.equals(startDate))))) {
-	  errors.rejectValue("end_date", "Range.date.checkin.checkout");
+	  errors.rejectValue("endDate", "Range.date.checkin.checkout");
 	}
   }
 }

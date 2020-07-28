@@ -22,18 +22,18 @@
 <%@ include file="../../resources/nav.jsp" %>
 
 <div class="container">
-  <%--@elvariable id="reservationForm" type="com.cyan.hotel.requestForm.RevervationForm"--%>
+  <%--@elvariable id="reservationForm" type="com.cyan.hotel.requestForm.ReservationForm"--%>
   <form:form id="reservation_book_room" class="reservation-form" modelAttribute="reservationForm" method="POST">
     <div class="starter-template" style="text-align: center">
       <h1>Reservation<br>BOOK ROOM</h1>
     </div>
 
     <div class="form-group ${status.error ? 'has-error' : ''}">
-      <p>Enter Checkin Date: <input type="text" id="start_date" name="start_date" required></p>
+      <p>Enter Checkin Date: <input type="text" id="startDate" name="startDate" required></p>
     </div>
 
     <div class="form-group ${status.error ? 'has-error' : ''}">
-      <p>Enter Checkout Date: <input type="text" id="end_date" name="end_date" required></p>
+      <p>Enter Checkout Date: <input type="text" id="endDate" name="endDate" required></p>
     </div>
     <button class="btn btn-primary" type="submit">Book Room</button>
   </form:form>
@@ -41,8 +41,8 @@
 </body>
 <script>
   $(function () {
-	$("#start_date").datepicker();
-	$("#end_date").datepicker();
+	$("#startDate").datepicker();
+	$("#endDate").datepicker();
   });
 </script>
 </html>
