@@ -30,12 +30,10 @@
 
     <div class="form-group ${status.error ? 'has-error' : ''}">
       <p>Enter Checkin Date: <input type="text" id="start_date" name="start_date" required></p>
-      <form:errors cssClass="alert-danger" path="start_date"/>
     </div>
 
     <div class="form-group ${status.error ? 'has-error' : ''}">
       <p>Enter Checkout Date: <input type="text" id="end_date" name="end_date" required></p>
-      <form:errors cssClass="alert-danger" path="end_date"/>
     </div>
     <button class="btn btn-primary" type="submit">Book Room</button>
   </form:form>
