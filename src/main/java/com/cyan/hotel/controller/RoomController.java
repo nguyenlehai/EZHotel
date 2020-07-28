@@ -3,14 +3,18 @@ package com.cyan.hotel.controller;
 import com.cyan.hotel.enumeration.RoomStyle;
 import com.cyan.hotel.model.Room;
 import com.cyan.hotel.repositoryService.RoomService;
+import com.cyan.hotel.requestForm.LoginForm;
+import com.cyan.hotel.requestForm.RevervationForm;
+import com.cyan.hotel.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -20,13 +24,28 @@ public class RoomController {
   @Autowired
   private RoomService roomService;
 
+  @Autowired
+  private InputValidator inputValidator;
+
   @GetMapping(value = "/room")
   public ModelAndView show() {
 	List<RoomStyle> roomTypes = getRoomTypes();
 
 	ModelAndView model = new ModelAndView("room");
-	model.addObject("roomTypesList", roomTypes);
+	model.addObject("reservationForm", roomTypes);
 	return model;
+  }
+
+  @PostMapping(value = "/room")
+  public String goToChooseRoomPage(@Valid @ModelAttribute("reservation_book_room") RevervationForm revervationForm,
+								   BindingResult result, Model model) throws ParseException {
+	inputValidator.validateRevervationRoom(revervationForm, result);
+
+	if (result.hasErrors()) {
+	  return "room";
+	}
+	model.addAttribute("reservationForm", new LoginForm());
+	return "redirect:/room/chooseRoom";
   }
 
   @GetMapping(value = "/room/chooseRoom")
