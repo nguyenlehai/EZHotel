@@ -39,18 +39,23 @@
           <!-- loop over and print our customers -->
           <c:forEach var="booking" items="${bookingList}">
 
-<%--            <c:url var="updateLink" value="/">--%>
-<%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
-<%--            </c:url>--%>
+            <%--            <c:url var="updateLink" value="/">--%>
+            <%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
+            <%--            </c:url>--%>
 
-<%--            <c:url var="deleteLink" value="/">--%>
-<%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
-<%--            </c:url>--%>
+            <%--            <c:url var="deleteLink" value="/">--%>
+            <%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
+            <%--            </c:url>--%>
 
             <tr>
               <td>${booking.id}</td>
               <td>${booking.bookingCode}</td>
-              <td>${booking.rooms}</td>
+
+              <td>
+                <c:forEach var="roomName" items="${booking.rooms}">
+                  ${roomName}
+                </c:forEach>
+              </td>
 
               <td>
                 <!-- display the update link --> <a href="${updateLink}">Update</a>
