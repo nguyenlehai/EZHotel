@@ -3,14 +3,17 @@ package com.cyan.hotel.controller;
 import com.cyan.hotel.enumeration.RoomStyle;
 import com.cyan.hotel.model.Room;
 import com.cyan.hotel.repositoryService.RoomService;
+import com.cyan.hotel.requestForm.ReservationForm;
+import com.cyan.hotel.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -20,12 +23,28 @@ public class RoomController {
   @Autowired
   private RoomService roomService;
 
+  @Autowired
+  private InputValidator inputValidator;
+
   @GetMapping(value = "/room")
   public ModelAndView show() {
-	List<RoomStyle> roomTypes = getRoomTypes();
+	return new ModelAndView("room");
+  }
 
-	ModelAndView model = new ModelAndView("room");
-	model.addObject("roomTypesList", roomTypes);
+  @PostMapping(value = "/room")
+  public String goToChooseRoomPage(@Valid @ModelAttribute("reservation_book_room") ReservationForm reservationForm,
+								   BindingResult result, Model model) throws ParseException {
+	inputValidator.validateReservationRoom(reservationForm, result);
+
+	if (result.hasErrors()) {
+	  return "room";
+	}
+	return "redirect:/room/chooseRoom";
+  }
+
+  @GetMapping(value = "/room/chooseRoom")
+  public ModelAndView chooseRoom() {
+	ModelAndView model = new ModelAndView("chooseRoom");
 	return model;
   }
 

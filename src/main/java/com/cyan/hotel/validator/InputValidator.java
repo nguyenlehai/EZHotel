@@ -5,10 +5,15 @@ import com.cyan.hotel.model.User;
 import com.cyan.hotel.repositoryService.AdminService;
 import com.cyan.hotel.repositoryService.UserService;
 import com.cyan.hotel.requestForm.RegisterForm;
+import com.cyan.hotel.requestForm.ReservationForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 public class InputValidator implements Validator {
@@ -20,43 +25,56 @@ public class InputValidator implements Validator {
 
   @Override
   public boolean supports(Class<?> aClass) {
-    return User.class.equals(aClass);
+	return User.class.equals(aClass);
   }
 
   @Override
   public void validate(Object o, Errors errors) {
-    RegisterForm registerForm = (RegisterForm) o;
+	RegisterForm registerForm = (RegisterForm) o;
 
-    if (!registerForm.getPasswordConfirm().equals(registerForm.getPassword())) {
-      errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
-    }
-    if (userService.existByUsername(registerForm.getUsername())) {
-      errors.rejectValue("username", "Duplicate.userForm.username");
-    }
-    if (userService.existByEmail(registerForm.getEmail())) {
-      errors.rejectValue("email", "Duplicate.userForm.email");
-    }
+	if (!registerForm.getPasswordConfirm().equals(registerForm.getPassword())) {
+	  errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+	}
+	if (userService.existByUsername(registerForm.getUsername())) {
+	  errors.rejectValue("username", "Duplicate.userForm.username");
+	}
+	if (userService.existByEmail(registerForm.getEmail())) {
+	  errors.rejectValue("email", "Duplicate.userForm.email");
+	}
   }
 
   public void validateUserLogin(Errors errors, String username, String password) {
-    if (userService.findByUsername(username) == null) {
-      errors.rejectValue("username", "Validate.username");
-    } else {
-      User user = userService.findByUsername(username);
-      if (!user.getPassword().equals(password)) {
-        errors.rejectValue("password", "Validate.password");
-      }
-    }
+	if (userService.findByUsername(username) == null) {
+	  errors.rejectValue("username", "Validate.username");
+	} else {
+	  User user = userService.findByUsername(username);
+	  if (!user.getPassword().equals(password)) {
+		errors.rejectValue("password", "Validate.password");
+	  }
+	}
   }
 
   public void validateAdminLogin(Errors errors, String username, String password) {
-    if (!adminService.existByUsername(username)) {
-      errors.rejectValue("username", "Validate.username");
-    } else {
-      Admin admin = adminService.findByUsername(username);
-      if (!admin.getPassword().equals(password)) {
-        errors.rejectValue("password", "Validate.password");
-      }
-    }
+	if (!adminService.existByUsername(username)) {
+	  errors.rejectValue("username", "Validate.username");
+	} else {
+	  Admin admin = adminService.findByUsername(username);
+	  if (!admin.getPassword().equals(password)) {
+		errors.rejectValue("password", "Validate.password");
+	  }
+	}
+  }
+
+  public void validateReservationRoom(Object o, Errors errors) throws ParseException {
+	ReservationForm reservationForm = (ReservationForm) o;
+
+	Date dateToday = new SimpleDateFormat("MM/dd/yyyy").parse(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+	Date startDate = new SimpleDateFormat("MM/dd/yyyy").parse(reservationForm.getStartDate());
+	Date endDate = new SimpleDateFormat("MM/dd/yyyy").parse(reservationForm.getEndDate());
+
+	if (!((startDate.equals(dateToday) && (endDate.equals(startDate) || endDate.after(startDate)))
+			|| (startDate.after(dateToday) && (endDate.after(startDate) || endDate.equals(startDate))))) {
+	  errors.rejectValue("endDate", "Range.date.checkin.checkout");
+	}
   }
 }
