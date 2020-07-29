@@ -39,7 +39,7 @@ public class AdminController {
         }
         modelMap.addAttribute("username", loginAdminForm.getUsername());
         session.setAttribute("adminLogin", "true");
-        return "redirect:/admin/room";
+        return "redirect:/admin/booking";
     }
 
     @GetMapping(value = "/admin/logout")

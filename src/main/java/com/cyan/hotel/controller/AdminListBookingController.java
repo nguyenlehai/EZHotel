@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class AdminRoomController {
+public class AdminListBookingController {
 
     @Autowired
     BookingService bookingService;
@@ -25,7 +25,7 @@ public class AdminRoomController {
     @Autowired
     RoomRepository roomRepository;
 
-    @GetMapping(value = "/admin/room")
+    @GetMapping(value = "/admin/booking")
     public String getListRoom(ModelMap modelMap) {
         List<Booking> bookingList = bookingService.findAll();
         List<AdminBookingDTO> adminBookingDTOS = new ArrayList<>();
@@ -33,10 +33,10 @@ public class AdminRoomController {
             AdminBookingDTO adminBookingDTO = new AdminBookingDTO();
             adminBookingDTO.setId(booking.getId());
             adminBookingDTO.setBookingCode(booking.getBookingCode());
-            adminBookingDTO.setRooms(roomRepository.findAllRooms());
+            adminBookingDTO.setRooms(roomRepository.findAllRooms(booking.getId()));
             adminBookingDTOS.add(adminBookingDTO);
         }
         modelMap.addAttribute("bookingList", adminBookingDTOS);
-        return "adminRoom";
+        return "adminListBooking";
     }
 }
