@@ -8,6 +8,7 @@ import com.cyan.hotel.validator.InputValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,19 +28,20 @@ public class RoomController {
   private InputValidator inputValidator;
 
   @GetMapping(value = "/room")
-  public ModelAndView show() {
-	return new ModelAndView("room");
+  public String show(ModelMap modelMap) {
+    modelMap.addAttribute("reservationForm", new ReservationForm());
+    return "room";
   }
 
   @PostMapping(value = "/room")
-  public String goToChooseRoomPage(@Valid @ModelAttribute("reservation_book_room") ReservationForm reservationForm,
-								   BindingResult result, Model model) throws ParseException {
-	inputValidator.validateReservationRoom(reservationForm, result);
+  public String goToChooseRoomPage(@Valid @ModelAttribute("reservationForm") ReservationForm reservationForm,
+                                   BindingResult result, Model model) throws ParseException {
+    inputValidator.validateReservationRoom(reservationForm, result);
 
-	if (result.hasErrors()) {
-	  return "room";
-	}
-	return "redirect:/room/chooseRoom";
+    if (result.hasErrors()) {
+      return "room";
+    }
+    return "redirect:/room/chooseRoom";
   }
 
   @GetMapping(value = "/room/chooseRoom")

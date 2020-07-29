@@ -31,9 +31,12 @@
       <p>Enter Checkin Date: <input type="text" id="startDate" name="startDate"></p>
     </div>
 
-    <div class="form-group ${status.error ? 'has-error' : ''}">
-      <p>Enter Checkout Date: <input type="text" id="endDate" name="endDate" required></p>
-    </div>
+    <spring:bind path="startDate">
+      <div class="form-group ${status.error ? 'has-error' : ''}">
+        <p>Enter Checkout Date: <input type="text" path="endDate" id="endDate" name="endDate" required></p>
+      </div>
+    </spring:bind>
+    <form:errors cssClass="alert-danger" path="endDate"/><br>
     <button class="btn btn-primary" type="submit">Book Room</button>
   </form:form>
 </div>
