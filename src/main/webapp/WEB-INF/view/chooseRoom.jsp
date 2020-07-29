@@ -24,7 +24,7 @@
 </div>
 
 <%--@elvariable id="roomList" type="java.util.List"--%>
-<form:form method="post" action="" modelAttribute="roomList">
+<form:form cssStyle="padding: 50px" method="post" action="" modelAttribute="roomList">
   <table id="roomsTable" class="table table-bordered table-striped table-hover" d>
     <thead>
     <tr style="text-align: center">
@@ -65,7 +65,7 @@
     </tbody>
   </table>
 </form:form>
-<div class="payment" style="text-align: right">
+<div class="payment" style="text-align: right; padding: 0 50px 50px 0">
   <div>Voucher <label>
     <input type="text">
   </label></div>
