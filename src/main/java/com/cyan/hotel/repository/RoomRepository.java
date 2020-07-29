@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-  @Query(value = "select r.name  from Room r join ")
-  List<Room> findAllRooms();
+    @Query(value = "select r.room_name  from room r join booking_room br on r.id = br.room_id join booking b on b.id = br.booking_id ", nativeQuery = true)
+    List<String> findAllRooms();
 
 //
 //  List<Room> getRoomsByRoomType(String roomType);

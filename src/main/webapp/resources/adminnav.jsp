@@ -13,7 +13,7 @@
       </ul>
       <div>
         <form action="" method="get">
-          <%--@elvariable id="login" type="java.lang.String"--%>
+          <%--@elvariable id="adminLogin" type="java.lang.String"--%>
           <c:if test="${sessionScope.adminLogin == 'true'}">
             <ul class="nav navbar-nav navbar-right">
               <li><p style="color: #cccccc; padding-top: 15px">

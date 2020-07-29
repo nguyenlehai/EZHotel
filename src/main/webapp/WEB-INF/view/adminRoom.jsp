@@ -17,57 +17,57 @@
 <%@ include file="../../resources/adminnav.jsp" %>
 
 <div class="container">
-  <div class="starter-template">
-    <h1>Room</h1>
+  <div class="col-md-offset-1 col-md-10">
+
+    <input type="button" value="Add Customer"
+           onclick="window.location.href='showForm'; return false;"
+           class="btn btn-primary"/>
+    <br/><br/>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Room list</div>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped table-bordered">
+          <tr>
+            <th>ID</th>
+            <th>Booking Code</th>
+            <th>Rooms</th>
+            <th>Action</th>
+          </tr>
+
+          <!-- loop over and print our customers -->
+          <c:forEach var="booking" items="${bookingList}">
+
+            <c:url var="updateLink" value="/">
+              <c:param name="customerId" value="${tempCustomer.id}"/>
+            </c:url>
+
+            <c:url var="deleteLink" value="/">
+              <c:param name="customerId" value="${tempCustomer.id}"/>
+            </c:url>
+
+            <tr>
+              <td>${booking.id}</td>
+              <td>${booking.bookingCode}</td>
+              <td>${booking.rooms}</td>
+
+              <td>
+                <!-- display the update link --> <a href="${updateLink}">Update</a>
+                | <a href="${deleteLink}"
+                     onclick="if (!(confirm('Are you sure you want to delete this customer?'))) return false">Delete</a>
+              </td>
+
+            </tr>
+
+          </c:forEach>
+
+        </table>
+
+      </div>
+    </div>
   </div>
+
 </div>
-
-<%--@elvariable id="roomType" type="java.lang.String"--%>
-<form method="GET" action="${pageContext.request.contextPath}/room/show">
-  <select name="roomTypesList" id="roomTypesId">
-    <option></option>
-    <%--@elvariable id="roomTypesList" type="com.cyan.hotel.enumeration.RoomStyle"--%>
-    <c:if test="${not empty roomTypesList}">
-      <c:forEach var="roomType" items="${roomTypesList}">
-        <option value="${roomType}">${roomType}</option>
-      </c:forEach>
-    </c:if>
-    <input type="submit" value="Select"/>
-  </select>
-</form>
-
-<%--@elvariable id="roomList" type="java.util.List"--%>
-<form:form method="post" action="" modelAttribute="roomList">
-  <table id="roomsTable" class="table table-bordered table-striped table-hover">
-    <thead>
-    <tr>
-      <th>Room Id</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th>Book</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:set var="i" value="1"/>
-    <c:forEach items="${roomList}" var="room">
-      <tr>
-        <td>${roomList.get(i).getRoomId()}</td>
-        <td>${roomList.get(i).getPrice()}</td>
-        <td>${roomList.get(i).getDescription()}</td>
-          <%-- when roomStatus is 0, room has been booked --%>
-        <c:if test="${roomList.get(i).getRoomStatus() == 0}">
-          <td><input class="btn btn-primary" type="button" value="Book Now" onclick="function openPage() {
-                  location.href='/booking/' + '${roomList.get(i).getRoomId()}';
-                  }
-                  openPage()"></td>
-        </c:if>
-        <c:if test="${roomList.get(i).getRoomStatus() == 1}">
-          <td><input class="btn btn-primary" type="button" value="Book Now" disabled></td>
-        </c:if>
-      </tr>
-    </c:forEach>
-    </tbody>
-  </table>
-</form:form>
 </body>
 </html>

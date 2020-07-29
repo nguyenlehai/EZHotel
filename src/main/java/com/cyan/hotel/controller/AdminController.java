@@ -18,33 +18,34 @@ import javax.validation.Valid;
 @Controller
 public class AdminController {
 
-  @Autowired
-  AdminService adminService;
+    @Autowired
+    AdminService adminService;
 
-  @Autowired
-  InputValidator inputValidator;
+    @Autowired
+    InputValidator inputValidator;
 
-  @GetMapping(value = "/admin/login")
-  public String adminLogin(ModelMap modelMap) {
-    modelMap.addAttribute("loginAdminForm", new LoginForm());
-    return "adminLogin";
-  }
 
-  @PostMapping(value = "/admin/login")
-  public String adminLogin(@Valid @ModelAttribute("loginAdminForm") LoginForm loginAdminForm, ModelMap modelMap, BindingResult result, HttpSession session) {
-    inputValidator.validateAdminLogin(result, loginAdminForm.getUsername(), loginAdminForm.getPassword());
-    if (result.hasErrors()) {
-      return "adminLogin";
+    @GetMapping(value = "/admin/login")
+    public String adminLogin(ModelMap modelMap) {
+        modelMap.addAttribute("loginAdminForm", new LoginForm());
+        return "adminLogin";
     }
-    modelMap.addAttribute("username", loginAdminForm.getUsername());
-    session.setAttribute("adminLogin", "true");
-    return "adminRoom";
-  }
 
-  @GetMapping(value = "/admin/logout")
-  public String adminLogout(HttpSession session) {
-    session.invalidate();
-    return "redirect:/home";
-  }
+    @PostMapping(value = "/admin/login")
+    public String adminLogin(@Valid @ModelAttribute("loginAdminForm") LoginForm loginAdminForm, ModelMap modelMap, BindingResult result, HttpSession session) {
+        inputValidator.validateAdminLogin(result, loginAdminForm.getUsername(), loginAdminForm.getPassword());
+        if (result.hasErrors()) {
+            return "adminLogin";
+        }
+        modelMap.addAttribute("username", loginAdminForm.getUsername());
+        session.setAttribute("adminLogin", "true");
+        return "redirect:/admin/room";
+    }
+
+    @GetMapping(value = "/admin/logout")
+    public String adminLogout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/home";
+    }
 
 }

@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
-  @Autowired
-  UserRepository userRepository;
+    @Autowired
+    UserRepository userRepository;
 
-  private boolean registrationValid;
+    private boolean registrationValid;
 
-  public boolean validateRegistration(String firstName, String lastName, String username, String password, String emailAddress) {
-	registrationValid = userRepository.findByUsername(username) == null;
+    public boolean validateRegistration(String firstName, String lastName, String username, String password, String emailAddress) {
+        registrationValid = userRepository.findByUsername(username) == null;
 
-	return registrationValid;
-  }
+        return registrationValid;
+    }
 }
