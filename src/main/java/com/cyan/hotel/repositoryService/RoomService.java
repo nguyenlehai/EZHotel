@@ -5,13 +5,10 @@ import com.cyan.hotel.model.Room;
 import java.util.List;
 
 public interface RoomService {
-  Room findRoomByRoomId(Long roomId);
+    Room findRoomByRoomId(Long roomId);
 
-  List<Room> findAllRooms();
+    List<Room> findAll();
 
-  List<Room> findAllAvailableRooms();
+    List<Room> getRoomsByRoomType(String roomType);
 
-  List<Room> getRoomsByRoomType(String roomType);
-
-  void updateRoomStatus(Long roomId, Integer roomStatus);
 }

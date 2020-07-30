@@ -18,71 +18,71 @@ import javax.validation.Valid;
 
 @Controller
 public class UserController {
-  final String secretKey = "SecretKey";
+    final String secretKey = "SecretKey";
 
-  @Autowired
-  private UserService userService;
+    @Autowired
+    private UserService userService;
 
-  @Autowired
-  private InputValidator inputValidator;
+    @Autowired
+    private InputValidator inputValidator;
 
-  @GetMapping(value = "/register")
-  public String register(Model model) {
-    model.addAttribute("registerForm", new RegisterForm());
-    return "register";
-  }
-
-  @PostMapping(value = "/register")
-  public String register(@Valid @ModelAttribute("registerForm") RegisterForm registerForm, BindingResult result, ModelMap model) {
-    inputValidator.validate(registerForm, result);
-
-    if (result.hasErrors()) {
-      return "register";
+    @GetMapping(value = "/register")
+    public String register(Model model) {
+        model.addAttribute("registerForm", new RegisterForm());
+        return "register";
     }
-    User newUser = new User();
-    String encryptedPassword = EncryptionAES.encrypt(registerForm.getPassword(), secretKey);
-    newUser.setPassword(encryptedPassword);
-    newUser.setFirstName(registerForm.getFirstName());
-    newUser.setLastName(registerForm.getLastName());
-    newUser.setEmail(registerForm.getEmail());
-    newUser.setIdentityCardNumber(registerForm.getIdentityCardNumber());
-    newUser.setPhoneNumber(registerForm.getPhoneNumber());
-    newUser.setUsername(registerForm.getUsername());
 
-    userService.save(newUser);
+    @PostMapping(value = "/register")
+    public String register(@Valid @ModelAttribute("registerForm") RegisterForm registerForm, BindingResult result, ModelMap model) {
+        inputValidator.validate(registerForm, result);
 
-    return "redirect:/login";
-  }
+        if (result.hasErrors()) {
+            return "register";
+        }
+        User newUser = new User();
+        String encryptedPassword = EncryptionAES.encrypt(registerForm.getPassword(), secretKey);
+        newUser.setPassword(encryptedPassword);
+        newUser.setFirstName(registerForm.getFirstName());
+        newUser.setLastName(registerForm.getLastName());
+        newUser.setEmail(registerForm.getEmail());
+        newUser.setIdentityCardNumber(registerForm.getIdentityCardNumber());
+        newUser.setPhoneNumber(registerForm.getPhoneNumber());
+        newUser.setUsername(registerForm.getUsername());
 
-  @RequestMapping(value = "/login", method = RequestMethod.GET)
-  public String showLoginPage(ModelMap model) {
-    model.addAttribute("loginForm", new LoginForm());
-    return "login";
-  }
+        userService.save(newUser);
 
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public String showLoginPage(@Valid @ModelAttribute("loginForm") LoginForm loginForm,
-                              ModelMap model, BindingResult result, HttpSession session) {
-    String encryptPassword = EncryptionAES.encrypt(loginForm.getPassword(), secretKey);
-
-    inputValidator.validateUserLogin(result, loginForm.getUsername(), encryptPassword);
-    if (result.hasErrors()) {
-      return "login";
+        return "redirect:/login";
     }
-    model.addAttribute("username", loginForm.getUsername());
-    model.addAttribute("login", "true");
-    session.setAttribute("login", "true");
-    return "home";
-  }
 
-  @GetMapping(value = "/home")
-  public String home() {
-    return "home";
-  }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String showLoginPage(ModelMap model) {
+        model.addAttribute("loginForm", new LoginForm());
+        return "login";
+    }
 
-  @GetMapping(value = "/logout")
-  public String logout(HttpSession session) {
-    session.invalidate();
-    return "redirect:/home";
-  }
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String showLoginPage(@Valid @ModelAttribute("loginForm") LoginForm loginForm,
+                                ModelMap model, BindingResult result, HttpSession session) {
+        String encryptPassword = EncryptionAES.encrypt(loginForm.getPassword(), secretKey);
+
+        inputValidator.validateUserLogin(result, loginForm.getUsername(), encryptPassword);
+        if (result.hasErrors()) {
+            return "login";
+        }
+        model.addAttribute("username", loginForm.getUsername());
+        model.addAttribute("login", "true");
+        session.setAttribute("login", "true");
+        return "home";
+    }
+
+    @GetMapping(value = "/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping(value = "/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/home";
+    }
 }

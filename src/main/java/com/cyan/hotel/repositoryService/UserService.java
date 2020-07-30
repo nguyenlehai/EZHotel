@@ -4,15 +4,15 @@ import com.cyan.hotel.model.User;
 
 public interface UserService {
 
-  User findByUsername(String username);
+    User findByUsername(String username);
 
-  void save(User user);
+    void save(User user);
 
-  User findByUserId(Long Id);
+    User findByUserId(Long Id);
 
-  boolean validateUser(String username, String password);
+    boolean validateUser(String username, String password);
 
-  boolean existByUsername(String username);
+    boolean existByUsername(String username);
 
-  boolean existByEmail(String email);
+    boolean existByEmail(String email);
 }

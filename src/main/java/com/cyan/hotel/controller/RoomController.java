@@ -21,14 +21,14 @@ import java.util.List;
 
 @Controller
 public class RoomController {
-  @Autowired
-  private RoomService roomService;
+    @Autowired
+    private RoomService roomService;
 
-  @Autowired
+    @Autowired
   private InputValidator inputValidator;
 
   @GetMapping(value = "/room")
-  public String show(ModelMap modelMap) {
+    public String show(ModelMap modelMap) {
     modelMap.addAttribute("reservationForm", new ReservationForm());
     return "room";
   }
@@ -47,30 +47,30 @@ public class RoomController {
   @GetMapping(value = "/room/chooseRoom")
   public ModelAndView chooseRoom() {
 	ModelAndView model = new ModelAndView("chooseRoom");
-	return model;
-  }
+        return model;
+    }
 
-  @GetMapping(value = "/room/show/{roomType}")
-  public String getRoomType(@PathVariable String roomType, Model model) {
+    @GetMapping(value = "/room/show/{roomType}")
+    public String getRoomType(@PathVariable String roomType, Model model) {
 
-	List<Room> roomList = roomService.getRoomsByRoomType(roomType);
-	model.addAttribute("roomList", roomList);
-	model.addAttribute("roomType", roomType);
+        List<Room> roomList = roomService.getRoomsByRoomType(roomType);
+        model.addAttribute("roomList", roomList);
+        model.addAttribute("roomType", roomType);
 
-	List<RoomStyle> roomTypes = getRoomTypes();
-	model.addAttribute("roomTypesList", roomTypes);
-	return "/room";
-  }
+        List<RoomStyle> roomTypes = getRoomTypes();
+        model.addAttribute("roomTypesList", roomTypes);
+        return "/room";
+    }
 
-  @GetMapping(value = "/room/show")
-  public String getRoomTypeByForm(@RequestParam("roomTypesList") String roomType) {
-	if (!roomType.isEmpty()) {
-	  return "redirect:/room/show/" + roomType;
-	}
-	return "/room";
-  }
+    @GetMapping(value = "/room/show")
+    public String getRoomTypeByForm(@RequestParam("roomTypesList") String roomType) {
+        if (!roomType.isEmpty()) {
+            return "redirect:/room/show/" + roomType;
+        }
+        return "/room";
+    }
 
-  private List<RoomStyle> getRoomTypes() {
-	return new ArrayList<RoomStyle>(EnumSet.allOf(RoomStyle.class));
-  }
+    private List<RoomStyle> getRoomTypes() {
+        return new ArrayList<RoomStyle>(EnumSet.allOf(RoomStyle.class));
+    }
 }
