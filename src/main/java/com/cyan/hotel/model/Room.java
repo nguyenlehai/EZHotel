@@ -15,11 +15,13 @@ public abstract class Room {
 
     private Float room_price;
 
+    private int deleteFlag;
+
     @ManyToOne
     @JoinColumn(name = "room_type_id", nullable = false, insertable = false, updatable = false)
     private RoomType room_type;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", orphanRemoval = true)
     Set<BookingRoom> bookingRooms;
 
 
@@ -63,5 +65,11 @@ public abstract class Room {
         this.room_type = room_type;
     }
 
+    public int getDeleteFlag() {
+        return deleteFlag;
+    }
 
+    public void setDeleteFlag(int deleteFlag) {
+        this.deleteFlag = deleteFlag;
+    }
 }

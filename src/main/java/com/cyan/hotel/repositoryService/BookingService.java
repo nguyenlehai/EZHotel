@@ -10,6 +10,7 @@ public interface BookingService {
 
     Booking findBookingByUser(User user);
 
+    Booking findById(Long id);
 
-    List<Booking> findAll();
+    List<Booking> findByDeleteFlag();
 }

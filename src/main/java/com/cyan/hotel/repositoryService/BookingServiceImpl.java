@@ -5,6 +5,7 @@ import com.cyan.hotel.model.User;
 import com.cyan.hotel.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import static com.cyan.hotel.Constants.*;
 
 import java.util.List;
 
@@ -33,7 +34,15 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<Booking> findAll() {
-        return bookingRepository.findAll();
+    public Booking findById(Long id) {
+        return bookingRepository.findById(id).get();
     }
+
+
+    @Override
+    public List<Booking> findByDeleteFlag() {
+        return bookingRepository.findByDeleteFlag(NOT_DELETED);
+    }
+
+
 }

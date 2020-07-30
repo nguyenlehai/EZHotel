@@ -23,6 +23,8 @@ public class Booking {
     @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
     private String checkOutDate;
 
+    private int deleteFlag;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = true, insertable = false, updatable = false)
@@ -32,7 +34,7 @@ public class Booking {
     @JoinColumn(name = "guest_id", nullable = true, insertable = false, updatable = false)
     private Guest guest;
 
-    @OneToMany(mappedBy = "booking")
+    @OneToMany(mappedBy = "booking", orphanRemoval = true, cascade = CascadeType.ALL)
     Set<BookingRoom> bookingRooms;
 
     public Booking() {
@@ -101,5 +103,13 @@ public class Booking {
 
     public void setGuest(Guest guest) {
         this.guest = guest;
+    }
+
+    public int getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public void setDeleteFlag(int deleteFlag) {
+        this.deleteFlag = deleteFlag;
     }
 }

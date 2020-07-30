@@ -17,10 +17,6 @@ public class RoomServiceImpl implements RoomService {
         return null;
     }
 
-    @Override
-    public List<Room> findAll() {
-        return roomRepository.findAll();
-    }
 
 
     @Override

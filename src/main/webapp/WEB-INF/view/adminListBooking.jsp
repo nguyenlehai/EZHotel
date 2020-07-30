@@ -5,10 +5,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="../../resources/main.js"></script>
-  <link rel="stylesheet" href="../../resources/css/bootstrap.min.3.3.7.css"/>
-  <c:url value="../../resources/main.css" var="jstlCss"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
   <link href="${jstlCss}" rel="stylesheet"/>
   <title>Room</title>
 </head>
@@ -16,12 +17,13 @@
 
 <%@ include file="../../resources/adminnav.jsp" %>
 
+
 <div class="container">
   <div class="col-md-offset-1 col-md-10">
 
     <input type="button" value="Add New Booking"
-           onclick="window.location.href='showForm'; return false;"
-           class="btn btn-primary"/>
+           onclick="window.location.href='booking/add'; return false;"
+           class="btn btn-primary" />
     <br/><br/>
     <div class="panel panel-info">
       <div class="panel-heading">
@@ -43,28 +45,24 @@
             <%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
             <%--            </c:url>--%>
 
-            <%--            <c:url var="deleteLink" value="/">--%>
-            <%--              <c:param name="customerId" value="${tempCustomer.id}"/>--%>
-            <%--            </c:url>--%>
+                        <c:url var="deleteLink" value="/admin/booking/delete">
+                          <c:param name="id" value="${booking.id}"/>
+                        </c:url>
 
             <tr>
               <td>${booking.id}</td>
               <td>${booking.bookingCode}</td>
-
               <td>
                 <c:forEach var="roomName" items="${booking.rooms}">
                   ${roomName}
                 </c:forEach>
               </td>
-
               <td>
                 <!-- display the update link --> <a href="${updateLink}">Update</a>
                 | <a href="${deleteLink}"
                      onclick="if (!(confirm('Are you sure you want to delete this booking?'))) return false">Delete</a>
               </td>
-
             </tr>
-
           </c:forEach>
 
         </table>
