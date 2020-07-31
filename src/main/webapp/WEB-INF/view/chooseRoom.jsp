@@ -25,45 +25,43 @@
 
 <%--@elvariable id="roomList" type="java.util.List"--%>
 <form:form cssStyle="padding: 50px" method="post" action="" modelAttribute="roomList">
-  <table id="roomsTable" class="table table-bordered table-striped table-hover" d>
-    <thead>
-    <tr style="text-align: center">
-      <th>Info Room</th>
-      <th>Description Room</th>
-      <th>Services</th>
-      <th>Choose room</th>
-      <th>Price</th>
-    </tr>
-    <tr>
-      <td>Type1</td>
-      <td>Phòng Deluxe được thiết kế tinh tế sang trọng nội thất đầy đủ tiện nghi hiện đại, cửa sổ
-        kính rộng thoáng bao quát toàn cảnh thành phố mang đến cho bạn một không gian thanh bình và
-        dễ chịu sẽ là sự lựa chọn cho những doanh nhân và khách du lịch.
-      </td>
-      <td>
-        Wine <select size="1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-        Cigar <select size="1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
-      </td>
-      <td><select size="1">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select></td>
-      <td>100000 VND</td>
-
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+  <c:forEach var="room" items="${roomInfoList}">
+    <table id="roomsTable" class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr style="text-align: center">
+        <th>Info Room</th>
+        <th>Description Room</th>
+        <th>Services</th>
+        <th>Choose room</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+        <td>${roomInfoList.id}</td>
+        <td>${roomInfoList.name} --- ${roomInfoList.roomImage} </td>
+        <td>
+          Wine <select size="1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+          Cigar <select size="1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        </td>
+        <td><select size="1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select></td>
+        <td>${roomInfoList.roomPrice}</td>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </c:forEach>
 </form:form>
 <div class="payment" style="text-align: right; padding: 0 50px 50px 0">
   <div>Voucher <label>
