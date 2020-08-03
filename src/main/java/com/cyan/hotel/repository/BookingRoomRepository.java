@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface BookingRoomRepository extends JpaRepository<BookingRoom, Long> {
 
-    @Query(value = "SELECT * from BookingRoom br where br.booking_id = :id ", nativeQuery = true)
-    List<BookingRoom> listByBooking(Long id);
+  @Query(value = "SELECT * from BookingRoom br where br.booking_id = :id ", nativeQuery = true)
+  List<BookingRoom> listByBooking(Long id);
 }

@@ -19,58 +19,57 @@ import java.util.List;
 @Controller
 public class BookingController {
 
-    @Autowired
-    private RoomService roomService;
+  @Autowired
+  private RoomService roomService;
 
-    @Autowired
-    private BookingService bookingService;
+  @Autowired
+  private BookingService bookingService;
 
-    @GetMapping(value = "/booking/{roomId}")
-    public String getRoomIdForBooking(@PathVariable Long roomId, Model model) {
-        Room room = roomService.findRoomByRoomId(roomId);
+  @GetMapping(value = "/booking/{roomId}")
+  public String getRoomIdForBooking(@PathVariable Long roomId, Model model) {
+    Room room = roomService.findRoomByRoomId(roomId);
 
-        model.addAttribute("room", room);
-        model.addAttribute("roomId", roomId);
+    model.addAttribute("room", room);
+    model.addAttribute("roomId", roomId);
 
-        return "booking";
+    return "booking";
+  }
+
+  @GetMapping(value = "/booking/user/{username}/{roomType}/{price}")
+  public String getUsername(@PathVariable String username,
+                            @PathVariable String roomType,
+                            @PathVariable Double price,
+                            @RequestParam("numOfGuests") Integer numOfGuests,
+                            @RequestParam("extras") String extrasList, Model model) {
+    if (!username.isEmpty()) {
+
+      Double bookingTotalPrice = getTotalPrice(extrasList, roomType, price);
+
+      SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+      Date date = new Date();
+      bookingService.insertBooking(formatter.format(date), numOfGuests, bookingTotalPrice, username);
+
+      return "redirect:/payment/" + username + "/" + bookingTotalPrice;
+    } else {
+      return "redirect:/booking/failed/";
     }
+  }
 
-    @GetMapping(value = "/booking/user/{username}/{roomType}/{price}")
-    public String getUsername(@PathVariable String username,
-                              @PathVariable String roomType,
-                              @PathVariable Double price,
-                              @RequestParam("numOfGuests") Integer numOfGuests,
-                              @RequestParam("extras") String extrasList, Model model) {
+  @GetMapping(value = "/booking/failed/")
+  public String failed() {
+    return "home";
+  }
 
-        if (!username.isEmpty()) {
+  private Double getTotalPrice(String extrasList, String roomType, Double price) {
 
-            Double bookingTotalPrice = getTotalPrice(extrasList, roomType, price);
+    Room room = null;
 
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            Date date = new Date();
-            bookingService.insertBooking(formatter.format(date), numOfGuests, bookingTotalPrice, username);
+    if (extrasList != null) {
+      String[] values = extrasList.split(",");
+      List<String> extras = new ArrayList<>(Arrays.asList(values));
 
-            return "redirect:/payment/" + username + "/" + bookingTotalPrice;
-        } else {
-            return "redirect:/booking/failed/";
-        }
+      assert room != null;
     }
-
-    @GetMapping(value = "/booking/failed/")
-    public String failed() {
-        return "home";
-    }
-
-    private Double getTotalPrice(String extrasList, String roomType, Double price) {
-
-        Room room = null;
-
-        if (extrasList != null) {
-            String[] values = extrasList.split(",");
-            List<String> extras = new ArrayList<>(Arrays.asList(values));
-
-            assert room != null;
-        }
-        return price;
-    }
+    return price;
+  }
 }

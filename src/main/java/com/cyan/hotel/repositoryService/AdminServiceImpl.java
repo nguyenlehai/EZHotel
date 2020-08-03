@@ -8,18 +8,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService {
 
-    @Autowired
-    AdminRepository adminRepository;
+  @Autowired
+  AdminRepository adminRepository;
 
-    @Override
-    public Boolean existByUsername(String username) {
-        return adminRepository.existsByUsername(username);
-    }
+  @Override
+  public Boolean existByUsername(String username) {
+    return adminRepository.existsByUsername(username);
+  }
 
-    @Override
-    public Admin findByUsername(String username) {
-        return adminRepository.findByUsername(username);
-    }
+  @Override
+  public Admin findByUsername(String username) {
+    return adminRepository.findByUsername(username);
+  }
 
 
 }

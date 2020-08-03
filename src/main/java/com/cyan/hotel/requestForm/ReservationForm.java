@@ -15,18 +15,18 @@ public class ReservationForm {
   }
 
   public String getStartDate() {
-	return startDate;
+    return startDate;
   }
 
   public void setStartDate(String startDate) {
-	this.startDate = startDate;
+    this.startDate = startDate;
   }
 
   public String getEndDate() {
-	return endDate;
+    return endDate;
   }
 
   public void setEndDate(String endDate) {
-	this.endDate = endDate;
+    this.endDate = endDate;
   }
 }

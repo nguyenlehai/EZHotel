@@ -1,14 +1,14 @@
 package com.cyan.hotel.dto;
 
 public class RoomDTO {
-  private long id;
-  private String name;
+  private Long id;
+  private String roomName;
   private String roomImage;
   private Long roomPrice;
 
-  public RoomDTO(long id, String name, String roomImage, Long roomPrice) {
+  public RoomDTO(Long id, String roomName, String roomImage, Long roomPrice) {
     this.id = id;
-    this.name = name;
+    this.roomName = roomName;
     this.roomImage = roomImage;
     this.roomPrice = roomPrice;
   }
@@ -17,20 +17,20 @@ public class RoomDTO {
 
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getRoomName() {
+    return roomName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setRoomName(String roomName) {
+    this.roomName = roomName;
   }
 
   public String getRoomImage() {

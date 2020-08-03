@@ -16,27 +16,27 @@ import java.util.List;
 @Controller
 public class AdminListBookingController {
 
-    @Autowired
-    BookingService bookingService;
+  @Autowired
+  BookingService bookingService;
 
-    @Autowired
-    BookingRoomRepository bookingRoomRepository;
+  @Autowired
+  BookingRoomRepository bookingRoomRepository;
 
-    @Autowired
-    RoomRepository roomRepository;
+  @Autowired
+  RoomRepository roomRepository;
 
-    @GetMapping(value = "/admin/booking")
-    public String getListRoom(ModelMap modelMap) {
-        List<Booking> bookingList = bookingService.findAll();
-        List<AdminBookingDTO> adminBookingDTOS = new ArrayList<>();
-        for (Booking booking : bookingList) {
-            AdminBookingDTO adminBookingDTO = new AdminBookingDTO();
-            adminBookingDTO.setId(booking.getId());
-            adminBookingDTO.setBookingCode(booking.getBookingCode());
-            adminBookingDTO.setRooms(roomRepository.findAllRooms(booking.getId()));
-            adminBookingDTOS.add(adminBookingDTO);
-        }
-        modelMap.addAttribute("bookingList", adminBookingDTOS);
-        return "adminListBooking";
+  @GetMapping(value = "/admin/booking")
+  public String getListRoom(ModelMap modelMap) {
+    List<Booking> bookingList = bookingService.findAll();
+    List<AdminBookingDTO> adminBookingDTOS = new ArrayList<>();
+    for (Booking booking : bookingList) {
+      AdminBookingDTO adminBookingDTO = new AdminBookingDTO();
+      adminBookingDTO.setId(booking.getId());
+      adminBookingDTO.setBookingCode(booking.getBookingCode());
+      adminBookingDTO.setRooms(roomRepository.findAllRooms(booking.getId()));
+      adminBookingDTOS.add(adminBookingDTO);
     }
+    modelMap.addAttribute("bookingList", adminBookingDTOS);
+    return "adminListBooking";
+  }
 }

@@ -10,6 +10,7 @@
   <script src="../../resources/main.js"></script>
   <link rel="stylesheet" href="../../resources/css/bootstrap.min.3.3.7.css"/>
   <c:url value="../../resources/main.css" var="jstlCss"/>
+  <c:url value="../../resources/main.css" var="jstlCss"/>
   <link href="${jstlCss}" rel="stylesheet"/>
   <title>Room</title>
 </head>
@@ -25,7 +26,7 @@
 
 <%--@elvariable id="roomList" type="java.util.List"--%>
 <form:form cssStyle="padding: 50px" method="post" action="" modelAttribute="roomList">
-  <c:forEach var="room" items="${roomInfoList}">
+  <c:forEach var="room" items="${roomList}">
     <table id="roomsTable" class="table table-bordered table-striped table-hover">
       <thead>
       <tr style="text-align: center">
@@ -36,8 +37,8 @@
         <th>Price</th>
       </tr>
       <tr>
-        <td>${roomInfoList.id}</td>
-        <td>${roomInfoList.name} --- ${roomInfoList.roomImage} </td>
+        <td>${room.id}</td>
+        <td>${room.roomName} ---<img src="${room.roomImage}"></td>
         <td>
           Wine <select size="1">
           <option>1</option>
@@ -55,7 +56,7 @@
           <option>2</option>
           <option>3</option>
         </select></td>
-        <td>${roomInfoList.roomPrice}</td>
+        <td>${room.roomPrice}</td>
       </tr>
       </thead>
       <tbody>

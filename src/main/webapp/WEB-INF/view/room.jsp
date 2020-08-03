@@ -43,8 +43,8 @@
 </body>
 <script>
   $(function () {
-	$("#startDate").datepicker();
-	$("#endDate").datepicker();
+    $("#startDate").datepicker();
+    $("#endDate").datepicker();
   });
 </script>
 </html>
