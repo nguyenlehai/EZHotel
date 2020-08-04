@@ -3,8 +3,8 @@ package com.cyan.hotel.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "booking_service")
-public class BookingService {
+@Table(name = "booking_option")
+public class BookingOption {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
@@ -19,11 +19,11 @@ public class BookingService {
   private Room room;
 
   @ManyToOne
-  @JoinColumn(name = "service", nullable = false, insertable = false, updatable = false)
-  private Service service;
+  @JoinColumn(name = "option", nullable = false, insertable = false, updatable = false)
+  private Option option;
 
-  @Column(name = "number_service")
-  private Integer number_service;
+  @Column(name = "quantum_option")
+  private Integer quantumOption;
 
   public Long getId() {
     return id;
@@ -49,19 +49,19 @@ public class BookingService {
     this.room = room;
   }
 
-  public Service getService() {
-    return service;
+  public Option getOption() {
+    return option;
   }
 
-  public void setService(Service service) {
-    this.service = service;
+  public void setOption(Option option) {
+    this.option = option;
   }
 
-  public Integer getNumber_service() {
-    return number_service;
+  public Integer getQuantumOption() {
+    return quantumOption;
   }
 
-  public void setNumber_service(Integer number_service) {
-    this.number_service = number_service;
+  public void setQuantumOption(Integer quantumOption) {
+    this.quantumOption = quantumOption;
   }
 }

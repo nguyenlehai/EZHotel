@@ -26,43 +26,48 @@
 
 <%--@elvariable id="roomList" type="java.util.List"--%>
 <form:form cssStyle="padding: 50px" method="post" action="" modelAttribute="roomList">
-  <c:forEach var="room" items="${roomList}">
-    <table id="roomsTable" class="table table-bordered table-striped table-hover">
-      <thead>
-      <tr style="text-align: center">
-        <th>Info Room</th>
-        <th>Description Room</th>
-        <th>Services</th>
-        <th>Choose room</th>
-        <th>Price</th>
-      </tr>
+  <table id="roomsTable" class="table table-bordered table-striped table-hover">
+    <thead>
+    <tr style="text-align: center">
+      <th style="width: 10%">Info Room</th>
+      <th style="width: 35%">Description Room</th>
+      <th style="width: 20%">Services</th>
+      <th style="width: 10%">Choose room</th>
+      <th>Price</th>
+    </tr>
+    <c:forEach var="room" items="${roomList}">
       <tr>
         <td>${room.id}</td>
-        <td>${room.roomName} ---<img src="${room.roomImage}"></td>
+        <td>${room.roomName} <br><img src="${room.roomImage}" alt="images"></td>
         <td>
-          Wine <select size="1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
-          Cigar <select size="1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
+          <jsp:useBean id="optionList" scope="request" type="java.util.List"/>
+          <c:forEach var="option" items="${optionList}">
+            <c:set var="val" value="${option.optionCost}"/>
+            <div>${option.optionName}</div>
+            <div><label for="option">
+              <select id="option">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select></label></div>
+          </c:forEach>
         </td>
-        <td><select size="1">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select></td>
+        <td>
+          <select id="numberOfRoom">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </td>
         <td>${room.roomPrice}</td>
       </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-  </c:forEach>
+    </c:forEach>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </form:form>
 <div class="payment" style="text-align: right; padding: 0 50px 50px 0">
   <div>Voucher <label>

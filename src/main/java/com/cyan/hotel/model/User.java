@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
   @Id

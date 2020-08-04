@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
+@Table(name = "booking")
 public class Booking {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,8 +3,8 @@ package com.cyan.hotel.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "booking_room")
 public class BookingRoom {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;

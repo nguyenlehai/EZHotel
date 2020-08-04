@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "event")
 public class Event {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +43,13 @@ public class Event {
 
   public void setEventDiscount(int eventDiscount) {
     this.eventDiscount = eventDiscount;
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
   }
 }

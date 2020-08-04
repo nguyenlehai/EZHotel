@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Table(name = "guest")
 public class Guest {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

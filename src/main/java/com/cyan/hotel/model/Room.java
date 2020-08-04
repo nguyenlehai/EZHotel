@@ -4,12 +4,13 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "room")
 public class Room {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String roomName;
+  private String roomDescription;
 
   private String roomImage;
 
@@ -30,12 +31,12 @@ public class Room {
     this.id = id;
   }
 
-  public String getRoomName() {
-    return roomName;
+  public String getRoomDescription() {
+    return roomDescription;
   }
 
-  public void setRoomName(String roomName) {
-    this.roomName = roomName;
+  public void setRoomDescription(String roomDescription) {
+    this.roomDescription = roomDescription;
   }
 
   public Long getRoomPrice() {

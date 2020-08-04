@@ -1,8 +1,12 @@
 package com.cyan.hotel.controller;
 
+import com.cyan.hotel.dto.OptionDTO;
 import com.cyan.hotel.dto.RoomDTO;
+import com.cyan.hotel.model.Option;
 import com.cyan.hotel.model.Room;
+import com.cyan.hotel.repository.BookingOptionRepository;
 import com.cyan.hotel.repository.BookingRoomRepository;
+import com.cyan.hotel.repositoryService.OptionService;
 import com.cyan.hotel.repositoryService.RoomService;
 import com.cyan.hotel.requestForm.ReservationForm;
 import com.cyan.hotel.validator.InputValidator;
@@ -26,10 +30,16 @@ public class RoomController {
   private RoomService roomService;
 
   @Autowired
+  private OptionService optionService;
+
+  @Autowired
   private InputValidator inputValidator;
 
   @Autowired
   BookingRoomRepository bookingRoomRepository;
+
+  @Autowired
+  BookingOptionRepository bookingOptionRepository;
 
   @GetMapping(value = "/room")
   public String show(ModelMap modelMap) {
@@ -51,16 +61,28 @@ public class RoomController {
   @GetMapping(value = "/room/chooseRoom")
   public String chooseRoom(ModelMap modelMap) {
     List<Room> roomList = roomService.findAll();
+    List<Option> optionList = optionService.findAll();
+
     List<RoomDTO> roomDTOs = new ArrayList<>();
+    List<OptionDTO> optionDTOS = new ArrayList<>();
+
     for (Room room : roomList) {
       RoomDTO roomDTO = new RoomDTO();
       roomDTO.setId(room.getId());
-      roomDTO.setRoomName(room.getRoomName());
+      roomDTO.setRoomName(room.getRoomDescription());
       roomDTO.setRoomImage(room.getRoomImage());
       roomDTO.setRoomPrice(room.getRoomPrice());
       roomDTOs.add(roomDTO);
     }
+
+    for (Option option : optionList) {
+      OptionDTO optionDTO = new OptionDTO();
+      optionDTO.setOptionCost(option.getOptionCost());
+      optionDTO.setOptionName(option.getOptionName());
+      optionDTOS.add(optionDTO);
+    }
     modelMap.addAttribute("roomList", roomDTOs);
+    modelMap.addAttribute("optionList", optionDTOS);
     return "chooseRoom";
   }
 }

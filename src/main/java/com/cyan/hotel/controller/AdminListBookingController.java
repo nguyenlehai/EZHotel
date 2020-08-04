@@ -33,7 +33,7 @@ public class AdminListBookingController {
       AdminBookingDTO adminBookingDTO = new AdminBookingDTO();
       adminBookingDTO.setId(booking.getId());
       adminBookingDTO.setBookingCode(booking.getBookingCode());
-      adminBookingDTO.setRooms(roomRepository.findAllRooms(booking.getId()));
+//      adminBookingDTO.setRooms(roomRepository.findAllRooms(booking.getId()));
       adminBookingDTOS.add(adminBookingDTO);
     }
     modelMap.addAttribute("bookingList", adminBookingDTOS);
