@@ -9,24 +9,21 @@
   <script type="text/javascript" src="../../resources/js/bootstrap.min.3.3.7.js"></script>
   <script src="../../resources/main.js"></script>
   <link rel="stylesheet" href="../../resources/css/bootstrap.min.3.3.7.css"/>
-  <c:url value="../../resources/main.css" var="jstlCss"/>
+  <script src="../../resources/js/jquery-1.10.2.js"></script>
   <c:url value="../../resources/main.css" var="jstlCss"/>
   <link href="${jstlCss}" rel="stylesheet"/>
   <title>Room</title>
 </head>
-<body>
-
+<body id="chooseRoomPage">
 <%@ include file="../../resources/nav.jsp" %>
-
 <div class="container">
   <div class="starter-template">
     <h1>EZHotel Room</h1>
   </div>
 </div>
-
 <%--@elvariable id="roomList" type="java.util.List"--%>
 <form:form cssStyle="padding: 50px" method="post" action="" modelAttribute="roomList">
-  <table id="roomsTable" class="table table-bordered table-striped table-hover">
+  <table class="table table-bordered table-striped table-hover">
     <thead>
     <tr style="text-align: center">
       <th style="width: 10%">Info Room</th>
@@ -36,32 +33,32 @@
       <th>Price</th>
     </tr>
     <c:forEach var="room" items="${roomList}">
-      <tr>
+      <tr class="roomTables">
         <td>${room.id}</td>
         <td>${room.roomName} <br><img src="${room.roomImage}" alt="images"></td>
         <td>
           <jsp:useBean id="optionList" scope="request" type="java.util.List"/>
           <c:forEach var="option" items="${optionList}">
-            <c:set var="val" value="${option.optionCost}"/>
             <div>${option.optionName}</div>
-            <div><label for="option">
-              <select id="option">
-                <option value="0" selected>0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select></label></div>
+            <select class="chooseOption">
+              <option value="0" option-cost="0">0</option>
+              <option value="1" option-cost="${option.optionCost}">1</option>
+              <option value="2" option-cost="${option.optionCost * 2}">2</option>
+              <option value="3" option-cost="${option.optionCost * 3}">3</option>
+            </select></label>
           </c:forEach>
         </td>
         <td>
-          <select id="numberOfRoom">
-            <option value="0" selected>0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+          <select class="chooseRoom">
+            <option value="0" room-cost="0" selected>0</option>
+            <option value="1" room-cost="${room.roomPrice}">1</option>
+            <option value="2" room-cost="${room.roomPrice * 2}">2</option>
+            <option value="3" room-cost="${room.roomPrice * 3}">3</option>
           </select>
         </td>
-        <td>${room.roomPrice}</td>
+        <td>
+          <div id="cost">0</div>
+        </td>
       </tr>
     </c:forEach>
     </thead>
@@ -74,9 +71,33 @@
     <input type="text">
   </label></div>
   <div>
-    Total: xxxxxx
+    Total:
+    <div id="total"></div>
   </div>
   <button class="btn btn-primary" type="submit">Book Room</button>
 </div>
 </body>
+<script>
+  $(document).ready(function () {
+    let optionCost, roomCost, cost = 0, arrCost = [];
+    $('.roomTables').change(function () {
+      cost = 0;
+      $(this).find(".chooseOption").each(function (i, obj) {
+        optionCost = parseInt($(obj).find(":selected").attr('option-cost'));
+        cost += optionCost
+      })
+      $(this).find('.chooseRoom').each(function (i, obj) {
+        roomCost = parseInt($(obj).find(":selected").attr('room-cost'));
+        cost += roomCost
+      })
+      $(this).find('#cost').text(cost.toString());
+      arrCost[$(this).find("td:first").html()] = cost;
+    })
+    $('#chooseRoomPage').change(function () {
+      $('#total').text(arrCost.reduce(function (a, b) {
+        return a + b
+      }, 0).toString());
+    });
+  });
+</script>
 </html>

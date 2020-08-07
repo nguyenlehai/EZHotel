@@ -11,7 +11,7 @@ public class Option {
 
   private String optionName;
 
-  private Float optionCost;
+  private Long optionCost;
 
   @OneToMany(mappedBy = "option")
   Set<BookingOption> bookingOptions;
@@ -32,11 +32,11 @@ public class Option {
     this.optionName = optionName;
   }
 
-  public Float getOptionCost() {
+  public Long getOptionCost() {
     return optionCost;
   }
 
-  public void setOptionCost(Float optionCost) {
+  public void setOptionCost(Long optionCost) {
     this.optionCost = optionCost;
   }
 
