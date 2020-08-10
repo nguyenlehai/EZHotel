@@ -41,66 +41,66 @@ public class RegisterForm {
   }
 
   public String getFirstName() {
-	return firstName;
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
-	this.firstName = firstName;
+    this.firstName = firstName;
   }
 
   public String getLastName() {
-	return lastName;
+    return lastName;
   }
 
   public void setLastName(String lastName) {
-	this.lastName = lastName;
+    this.lastName = lastName;
   }
 
   public String getUsername() {
-	return username;
+    return username;
   }
 
   public void setUsername(String username) {
-	this.username = username;
+    this.username = username;
   }
 
   public String getPassword() {
-	return password;
+    return password;
   }
 
   public void setPassword(String password) {
-	this.password = password;
+    this.password = password;
   }
 
   public String getEmail() {
-	return email;
+    return email;
   }
 
   public void setEmail(String email) {
-	this.email = email;
+    this.email = email;
   }
 
   public String getPhoneNumber() {
-	return phoneNumber;
+    return phoneNumber;
   }
 
   public void setPhoneNumber(String phoneNumber) {
-	this.phoneNumber = phoneNumber;
+    this.phoneNumber = phoneNumber;
   }
 
   public String getIdentityCardNumber() {
-	return identityCardNumber;
+    return identityCardNumber;
   }
 
   public void setIdentityCardNumber(String identityCardNumber) {
-	this.identityCardNumber = identityCardNumber;
+    this.identityCardNumber = identityCardNumber;
   }
 
   public String getPasswordConfirm() {
-	return passwordConfirm;
+    return passwordConfirm;
   }
 
   public void setPasswordConfirm(String passwordConfirm) {
-	this.passwordConfirm = passwordConfirm;
+    this.passwordConfirm = passwordConfirm;
   }
 }

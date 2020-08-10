@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "event")
 public class Event {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,26 +22,34 @@ public class Event {
   }
 
   public long getId() {
-	return id;
+    return id;
   }
 
   public void setId(long id) {
-	this.id = id;
+    this.id = id;
   }
 
   public String getEventDescription() {
-	return eventDescription;
+    return eventDescription;
   }
 
   public void setEventDescription(String eventDescription) {
-	this.eventDescription = eventDescription;
+    this.eventDescription = eventDescription;
   }
 
   public int getEventDiscount() {
-	return eventDiscount;
+    return eventDiscount;
   }
 
   public void setEventDiscount(int eventDiscount) {
-	this.eventDiscount = eventDiscount;
+    this.eventDiscount = eventDiscount;
+  }
+
+  public Set<User> getUsers() {
+    return users;
+  }
+
+  public void setUsers(Set<User> users) {
+    this.users = users;
   }
 }

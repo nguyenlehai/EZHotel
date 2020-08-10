@@ -3,70 +3,71 @@ package com.cyan.hotel.model;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "room")
-public abstract class Room {
+@Entity
+@Table(name = "room")
+public class Room {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String room_name;
+  private String roomDescription;
 
-  private String room_image;
+  private String roomImage;
 
-  private Float room_price;
+  private Long roomPrice;
 
   @ManyToOne
   @JoinColumn(name = "room_type_id", nullable = false, insertable = false, updatable = false)
   private RoomType room_type;
 
-  @ManyToMany(mappedBy = "rooms")
-  Set<Booking> bookings;
+  @OneToMany(mappedBy = "room", orphanRemoval = true, cascade = CascadeType.ALL)
+  Set<BookingRoom> bookingRooms;
 
   public Long getId() {
-	return id;
+    return id;
   }
 
   public void setId(Long id) {
-	this.id = id;
+    this.id = id;
   }
 
-  public String getRoom_name() {
-	return room_name;
+  public String getRoomDescription() {
+    return roomDescription;
   }
 
-  public void setRoom_name(String room_name) {
-	this.room_name = room_name;
+  public void setRoomDescription(String roomDescription) {
+    this.roomDescription = roomDescription;
   }
 
-  public Float getRoom_price() {
-	return room_price;
+  public Long getRoomPrice() {
+    return roomPrice;
   }
 
-  public void setRoom_price(Float room_price) {
-	this.room_price = room_price;
+  public void setRoomPrice(Long roomPrice) {
+    this.roomPrice = roomPrice;
   }
 
-  public String getRoom_image() {
-	return room_image;
+  public String getRoomImage() {
+    return roomImage;
   }
 
-  public void setRoom_image(String room_image) {
-	this.room_image = room_image;
+  public void setRoomImage(String roomImage) {
+    this.roomImage = roomImage;
   }
 
   public RoomType getRoom_type() {
-	return room_type;
+    return room_type;
   }
 
   public void setRoom_type(RoomType room_type) {
-	this.room_type = room_type;
+    this.room_type = room_type;
   }
 
-  public Set<Booking> getBookings() {
-	return bookings;
+  public Set<BookingRoom> getBookingRooms() {
+    return bookingRooms;
   }
 
-  public void setBookings(Set<Booking> bookings) {
-	this.bookings = bookings;
+  public void setBookingRooms(Set<BookingRoom> bookingRooms) {
+    this.bookingRooms = bookingRooms;
   }
 }

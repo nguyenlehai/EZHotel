@@ -50,7 +50,6 @@ public class UserController {
     newUser.setUsername(registerForm.getUsername());
 
     userService.save(newUser);
-
     return "redirect:/login";
   }
 

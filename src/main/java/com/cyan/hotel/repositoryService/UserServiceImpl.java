@@ -12,31 +12,31 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User findByUsername(String username) {
-	return userRepository.findByUsername(username);
+    return userRepository.findByUsername(username);
   }
 
   public boolean existByUsername(String username) {
-	return userRepository.existsByUsername(username);
+    return userRepository.existsByUsername(username);
   }
 
   public boolean existByEmail(String email) {
-	return userRepository.existsByEmail(email);
+    return userRepository.existsByEmail(email);
   }
 
   @Override
   public void save(User user) {
-	userRepository.save(user);
+    userRepository.save(user);
   }
 
   @Override
   public User findByUserId(Long userId) {
-	return userRepository.findById(userId).get();
+    return userRepository.findById(userId).get();
   }
 
   @Override
   public boolean validateUser(String user, String password) {
-	User username = userRepository.findByUsername(user);
+    User username = userRepository.findByUsername(user);
 
-	return (user.equals(username.getUsername()));
+    return (user.equals(username.getUsername()));
   }
 }

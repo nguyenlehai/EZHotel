@@ -24,6 +24,7 @@ public class AdminController {
   @Autowired
   InputValidator inputValidator;
 
+
   @GetMapping(value = "/admin/login")
   public String adminLogin(ModelMap modelMap) {
     modelMap.addAttribute("loginAdminForm", new LoginForm());
@@ -38,7 +39,7 @@ public class AdminController {
     }
     modelMap.addAttribute("username", loginAdminForm.getUsername());
     session.setAttribute("adminLogin", "true");
-    return "adminRoom";
+    return "redirect:/admin/booking";
   }
 
   @GetMapping(value = "/admin/logout")
@@ -46,5 +47,4 @@ public class AdminController {
     session.invalidate();
     return "redirect:/home";
   }
-
 }

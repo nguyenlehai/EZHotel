@@ -8,6 +8,6 @@ public class EventController {
 
   @GetMapping(value = "/event")
   public String event() {
-	return "event";
+    return "event";
   }
 }

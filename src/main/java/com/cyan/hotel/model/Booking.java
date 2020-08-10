@@ -5,6 +5,7 @@ import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
+@Table(name = "booking")
 public class Booking {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,90 +24,82 @@ public class Booking {
   @Pattern(regexp = "(\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}) ")
   private String checkOutDate;
 
-  @ManyToMany
-  Set<Room> rooms;
-
   @ManyToOne
-  @JoinColumn(name = "user_id", nullable = false, insertable = false, updatable = false)
+  @JoinColumn(name = "user_id", nullable = true, insertable = false, updatable = false)
   private User user;
 
   @ManyToOne
-  @JoinColumn(name = "guest_id", nullable = false, insertable = false, updatable = false)
+  @JoinColumn(name = "guest_id", nullable = true, insertable = false, updatable = false)
   private Guest guest;
+
+  @OneToMany(mappedBy = "booking", orphanRemoval = true, cascade = CascadeType.ALL)
+  Set<BookingRoom> bookingRooms;
 
   public Booking() {
 
   }
 
   public Long getId() {
-	return id;
+    return id;
   }
 
   public void setId(Long id) {
-	this.id = id;
+    this.id = id;
   }
 
   public String getBookingDate() {
-	return bookingDate;
+    return bookingDate;
   }
 
   public void setBookingDate(String bookingDate) {
-	this.bookingDate = bookingDate;
+    this.bookingDate = bookingDate;
   }
 
   public Float getBookingTotal() {
-	return bookingTotal;
+    return bookingTotal;
   }
 
   public void setBookingTotal(Float bookingTotal) {
-	this.bookingTotal = bookingTotal;
+    this.bookingTotal = bookingTotal;
   }
 
   public String getBookingCode() {
-	return bookingCode;
+    return bookingCode;
   }
 
   public void setBookingCode(String bookingCode) {
-	this.bookingCode = bookingCode;
+    this.bookingCode = bookingCode;
   }
 
   public String getCheckInDate() {
-	return checkInDate;
+    return checkInDate;
   }
 
   public void setCheckInDate(String checkInDate) {
-	this.checkInDate = checkInDate;
+    this.checkInDate = checkInDate;
   }
 
   public String getCheckOutDate() {
-	return checkOutDate;
+    return checkOutDate;
   }
 
   public void setCheckOutDate(String checkOutDate) {
-	this.checkOutDate = checkOutDate;
-  }
-
-  public Set<Room> getRooms() {
-	return rooms;
-  }
-
-  public void setRooms(Set<Room> rooms) {
-	this.rooms = rooms;
+    this.checkOutDate = checkOutDate;
   }
 
   public User getUser() {
-	return user;
+    return user;
   }
 
   public void setUser(User user) {
-	this.user = user;
+    this.user = user;
   }
 
   public Guest getGuest() {
-	return guest;
+    return guest;
   }
 
   public void setGuest(Guest guest) {
-	this.guest = guest;
+    this.guest = guest;
   }
 }

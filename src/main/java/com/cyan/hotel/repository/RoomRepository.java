@@ -5,15 +5,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-//  @Query(value = "select r from Room r", nativeQuery = true)
-//  List<Room> findAllRooms();
-//
-//  @Query(value = "select r from Room r where r.roomStatus = 0", nativeQuery = true)
-//  List<Room> findAllAvailableRooms();
+//  @Query(value = "select r.room_name  from room r join booking_room br on r.id = br.room_id where br.booking_id = :id", nativeQuery = true)
+//  List<String> findAllRooms(@Param("id") Long id);
+
+  List<Room> findAll();
+
 //
 //  List<Room> getRoomsByRoomType(String roomType);
 //
@@ -22,4 +24,5 @@ public interface RoomRepository extends JpaRepository<Room, Long> {
 //    @Modifying(clearAutomatically = true)
 //    @Query("update Room room set room.roomStatus=?2 where room.roomId=?1")
 //    void updateRoomStatus(Long roomId, Integer roomStatus);
+
 }

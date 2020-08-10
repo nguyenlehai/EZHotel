@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Table(name = "guest")
 public class Guest {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,51 +30,51 @@ public class Guest {
   Set<Booking> bookings;
 
   public int getId() {
-	return id;
+    return id;
   }
 
   public void setId(int id) {
-	this.id = id;
+    this.id = id;
   }
 
   public String getFirstName() {
-	return firstName;
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
-	this.firstName = firstName;
+    this.firstName = firstName;
   }
 
   public String getLastName() {
-	return lastName;
+    return lastName;
   }
 
   public void setLastName(String lastName) {
-	this.lastName = lastName;
+    this.lastName = lastName;
   }
 
   public int getPhoneNumber() {
-	return phoneNumber;
+    return phoneNumber;
   }
 
   public void setPhoneNumber(int phoneNumber) {
-	this.phoneNumber = phoneNumber;
+    this.phoneNumber = phoneNumber;
   }
 
   public String getEmail() {
-	return email;
+    return email;
   }
 
   public void setEmail(String email) {
-	this.email = email;
+    this.email = email;
   }
 
   public int getIdentityCardNumber() {
-	return identityCardNumber;
+    return identityCardNumber;
   }
 
   public void setIdentityCardNumber(int identityCardNumber) {
-	this.identityCardNumber = identityCardNumber;
+    this.identityCardNumber = identityCardNumber;
   }
 
   public Guest() {

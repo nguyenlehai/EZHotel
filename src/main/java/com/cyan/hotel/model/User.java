@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
   @Id
@@ -42,75 +43,75 @@ public class User {
   }
 
   public Long getId() {
-	return id;
+    return id;
   }
 
   public void setId(Long id) {
-	this.id = id;
+    this.id = id;
   }
 
   public String getFirstName() {
-	return firstName;
+    return firstName;
   }
 
   public void setFirstName(String firstName) {
-	this.firstName = firstName;
+    this.firstName = firstName;
   }
 
   public String getLastName() {
-	return lastName;
+    return lastName;
   }
 
   public String getUsername() {
-	return username;
+    return username;
   }
 
   public String getPassword() {
-	return password;
+    return password;
   }
 
   public void setLastName(String lastName) {
-	this.lastName = lastName;
+    this.lastName = lastName;
   }
 
   public void setUsername(String username) {
-	this.username = username;
+    this.username = username;
   }
 
   public void setPassword(String password) {
-	this.password = password;
+    this.password = password;
   }
 
   public Set<Event> getEvents() {
-	return events;
+    return events;
   }
 
   public void setEvents(Set<Event> events) {
-	this.events = events;
+    this.events = events;
   }
 
 
   public String getPhoneNumber() {
-	return phoneNumber;
+    return phoneNumber;
   }
 
   public void setPhoneNumber(String phoneNumber) {
-	this.phoneNumber = phoneNumber;
+    this.phoneNumber = phoneNumber;
   }
 
   public String getEmail() {
-	return email;
+    return email;
   }
 
   public void setEmail(String email) {
-	this.email = email;
+    this.email = email;
   }
 
   public String getIdentityCardNumber() {
-	return identityCardNumber;
+    return identityCardNumber;
   }
 
   public void setIdentityCardNumber(String identityCardNumber) {
-	this.identityCardNumber = identityCardNumber;
+    this.identityCardNumber = identityCardNumber;
   }
 }

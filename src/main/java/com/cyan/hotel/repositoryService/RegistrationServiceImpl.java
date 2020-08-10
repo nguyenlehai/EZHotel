@@ -12,8 +12,8 @@ public class RegistrationServiceImpl implements RegistrationService {
   private boolean registrationValid;
 
   public boolean validateRegistration(String firstName, String lastName, String username, String password, String emailAddress) {
-	registrationValid = userRepository.findByUsername(username) == null;
+    registrationValid = userRepository.findByUsername(username) == null;
 
-	return registrationValid;
+    return registrationValid;
   }
 }
